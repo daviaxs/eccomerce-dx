@@ -1,3 +1,5 @@
+import { LayoutBaseDePagina } from '@/shared/layout/LayoutBaseDePagina'
+
 export function Home() {
-  return <p>Hello world</p>
+  return <LayoutBaseDePagina>Hello world</LayoutBaseDePagina>
 }
