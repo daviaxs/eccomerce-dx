@@ -24,6 +24,18 @@ const THeadingPrimaryStyle = styled.h1<ITextProps>`
   text-shadow: ${(props) => props.txtShadow};
 `
 
+const TTitlePrimaryStyle = styled.strong<ITextProps>`
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: ${(props) => props.fontSize}rem;
+  white-space: ${(props) => props.whiteSpace};
+  text-align: ${(props) => props.textAlign};
+  line-height: 100%;
+
+  color: ${(props) => props.txtColor};
+  text-shadow: ${(props) => props.txtShadow};
+`
+
 export const THeadingPrimary: React.FC<ITextProps> = ({
   txtColor,
   className,
@@ -46,5 +58,30 @@ export const THeadingPrimary: React.FC<ITextProps> = ({
     >
       {children}
     </THeadingPrimaryStyle>
+  )
+}
+
+export const TTitlePrimary: React.FC<ITextProps> = ({
+  txtColor,
+  className,
+  txtShadow,
+  textAlign,
+  whiteSpace = 'normal',
+  fontSize = 2,
+  display,
+  children,
+}) => {
+  return (
+    <TTitlePrimaryStyle
+      txtColor={txtColor}
+      txtShadow={txtShadow}
+      textAlign={textAlign}
+      whiteSpace={whiteSpace}
+      fontSize={fontSize}
+      className={className}
+      display={display}
+    >
+      {children}
+    </TTitlePrimaryStyle>
   )
 }
