@@ -48,6 +48,18 @@ const TTitlePrimaryStyle = styled.strong<ITextProps>`
   text-shadow: ${(props) => props.txtShadow};
 `
 
+const TTextPrimaryStyle = styled.p<ITextProps>`
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: ${(props) => props.fontSize}rem;
+  white-space: ${(props) => props.whiteSpace};
+  text-align: ${(props) => props.textAlign};
+  line-height: 100%;
+
+  color: ${(props) => props.txtColor};
+  text-shadow: ${(props) => props.txtShadow};
+`
+
 export const THeadingPrimary: React.FC<ITextProps> = ({
   txtColor,
   className,
@@ -120,5 +132,30 @@ export const TTitlePrimary: React.FC<ITextProps> = ({
     >
       {children}
     </TTitlePrimaryStyle>
+  )
+}
+
+export const TTextPrimary: React.FC<ITextProps> = ({
+  txtColor,
+  className,
+  txtShadow,
+  textAlign,
+  whiteSpace = 'normal',
+  fontSize = 1,
+  display,
+  children,
+}) => {
+  return (
+    <TTextPrimaryStyle
+      txtColor={txtColor}
+      txtShadow={txtShadow}
+      textAlign={textAlign}
+      whiteSpace={whiteSpace}
+      fontSize={fontSize}
+      className={className}
+      display={display}
+    >
+      {children}
+    </TTextPrimaryStyle>
   )
 }
