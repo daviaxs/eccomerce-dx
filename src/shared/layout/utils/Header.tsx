@@ -10,7 +10,7 @@ const HeaderStyle = styled.header`
   height: 4rem;
 
   background-color: ${theme.gray[700]};
-  border-bottom: 1px solid #2b2b2b;
+  border-bottom: 1px solid ${theme.gray[500]};
 `
 
 export function Header() {
