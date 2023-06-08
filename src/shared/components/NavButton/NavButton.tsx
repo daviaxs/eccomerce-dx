@@ -1,3 +1,4 @@
+import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -7,5 +8,9 @@ interface INavButtonProps {
 }
 
 export function NavButton({ children, to }: INavButtonProps) {
-  return <NavLink to={to}>{children}</NavLink>
+  return (
+    <NavLink to={to}>
+      <THeadingSecondary>{children}</THeadingSecondary>
+    </NavLink>
+  )
 }
