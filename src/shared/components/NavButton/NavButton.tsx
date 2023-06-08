@@ -53,6 +53,10 @@ const NavButtonStyle = styled.button<INavButtonProps>`
   &.inactive {
     opacity: 60%;
   }
+
+  &.inactive:hover {
+    opacity: 80%;
+  }
 `
 
 export const NavButton: React.FC<INavButtonProps> = ({
