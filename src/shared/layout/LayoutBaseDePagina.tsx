@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Container } from '../components/container/Container'
 import { Header } from './utils/Header'
 
 interface ILayoutBaseDePaginaProps {
@@ -18,7 +19,9 @@ export function LayoutBaseDePagina({ children }: ILayoutBaseDePaginaProps) {
   return (
     <Box>
       <Header />
-      {children}
+      <Container display="flex" height="100%" width="100%" padding={2}>
+        {children}
+      </Container>
     </Box>
   )
 }
