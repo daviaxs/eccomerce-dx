@@ -1,4 +1,4 @@
-import { NavButton } from '@/shared/components/NavButton/NavButton'
+import { NavButton } from '@/shared/components/navButton/NavButton'
 import { theme } from '@/shared/theme'
 import styled from 'styled-components'
 
