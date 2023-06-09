@@ -1,7 +1,22 @@
+import styled from 'styled-components'
+
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary, TTitlePrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout/LayoutBaseDePagina'
 import { theme } from '@/shared/theme'
+
+const Separator = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+`
+
+const LineStyle = styled.span`
+  background-color: ${theme.gray[600]};
+  width: 100%;
+  height: 0.2rem;
+`
 
 export function Home() {
   return (
@@ -15,6 +30,13 @@ export function Home() {
           ofertas irresistíveis e a conveniência de fazer suas compras online.
           Não se contente com menos do que você merece.
         </TTitlePrimary>
+        <Separator>
+          <LineStyle />
+          <THeadingPrimary txtColor={theme.gray[600]} fontSize={1.3}>
+            Produtos
+          </THeadingPrimary>
+          <LineStyle />
+        </Separator>
       </Container>
     </LayoutBaseDePagina>
   )
