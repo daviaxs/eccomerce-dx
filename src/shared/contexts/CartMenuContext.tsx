@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useCallback, useContext, useState } from 'react'
 
 interface ICartMenuContextData {
   expandedCartMenu: boolean
@@ -16,5 +16,16 @@ export const useCartMenuContext = () => {
 }
 
 export function CartMenuProvider({ children }: ICartMenuProviderProps) {
-  return <>{children}</>
+  const [expandedCartMenu, setExpandedCartMenu] = useState(false)
+
+  const toggleCartMenu = useCallback(() => {
+    const newExpandedCartMenu = !expandedCartMenu
+    setExpandedCartMenu(newExpandedCartMenu)
+  }, [expandedCartMenu])
+
+  return (
+    <CartMenuContext.Provider value={{ toggleCartMenu, expandedCartMenu }}>
+      {children}
+    </CartMenuContext.Provider>
+  )
 }
