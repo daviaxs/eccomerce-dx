@@ -14,6 +14,7 @@ const Box = styled.div`
 
   height: 100vh;
   width: 100vw;
+  overflow-x: hidden;
 `
 
 export function LayoutBaseDePagina({ children }: ILayoutBaseDePaginaProps) {
