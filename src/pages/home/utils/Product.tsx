@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { Container } from '@/shared/components/container/Container'
+import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 
 interface IProductProps {
@@ -13,8 +15,10 @@ interface IProductProps {
 
 const ProductStyle = styled.li`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  padding: 1rem;
 
   background-color: ${theme.gray[700]};
 
@@ -30,5 +34,25 @@ export function Product({
   oldPrice,
   discount,
 }: IProductProps) {
-  return <ProductStyle></ProductStyle>
+  return (
+    <ProductStyle>
+      <img src={img} alt="" />
+      <Container
+        display="flex"
+        flexDir="column"
+        align="start"
+        justifyContent="center"
+        gap={1}
+        width="100%"
+        height=""
+        marginBottom={1}
+        marginTop={1}
+      >
+        <THeadingPrimary txtColor={theme.gray[50]}>R$ {price}</THeadingPrimary>
+        <TTextPrimary fontSize={0.8} txtColor={theme.gray[50]}>
+          {description}
+        </TTextPrimary>
+      </Container>
+    </ProductStyle>
+  )
 }

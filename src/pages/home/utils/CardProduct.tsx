@@ -14,12 +14,42 @@ const ProductsContainer = styled.ul`
 export function CardProduct() {
   return (
     <ProductsContainer>
-      <Product key={1} img="" price={20} description="" />
-      <Product key={1} img="" price={20} description="" />
-      <Product key={1} img="" price={20} description="" />
-      <Product key={1} img="" price={20} description="" />
-      <Product key={1} img="" price={20} description="" />
-      <Product key={1} img="" price={20} description="" />
+      <Product
+        key={1}
+        img="http://http2.mlstatic.com/D_916456-MLA52626408897_112022-I.jpg"
+        price={20}
+        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
+      />
+      <Product
+        key={1}
+        img=""
+        price={20}
+        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
+      />
+      <Product
+        key={1}
+        img=""
+        price={20}
+        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
+      />
+      <Product
+        key={1}
+        img=""
+        price={20}
+        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
+      />
+      <Product
+        key={1}
+        img=""
+        price={20}
+        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
+      />
+      <Product
+        key={1}
+        img=""
+        price={20}
+        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
+      />
     </ProductsContainer>
   )
 }
