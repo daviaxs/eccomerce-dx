@@ -4,6 +4,7 @@ import { Product } from './Product'
 const ProductsContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 2rem;
   gap: 4rem;
 `
 
