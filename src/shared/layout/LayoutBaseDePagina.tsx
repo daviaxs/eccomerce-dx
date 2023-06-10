@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Container } from '../components/container/Container'
-import { Header } from './utils/Header'
+
+import { Container } from '@/shared/components/container/Container'
+import { Header } from '@/shared/layout/utils/Header'
 
 interface ILayoutBaseDePaginaProps {
   children: React.ReactNode

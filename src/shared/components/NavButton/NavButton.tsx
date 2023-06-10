@@ -1,8 +1,9 @@
-import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
-import { theme } from '@/shared/theme'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+
+import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
+import { theme } from '@/shared/theme'
 
 interface INavButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   to: string

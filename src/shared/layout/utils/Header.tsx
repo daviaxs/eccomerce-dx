@@ -1,6 +1,7 @@
+import styled from 'styled-components'
+
 import { NavButton } from '@/shared/components/navButton/NavButton'
 import { theme } from '@/shared/theme'
-import styled from 'styled-components'
 
 const HeaderStyle = styled.header`
   display: flex;
