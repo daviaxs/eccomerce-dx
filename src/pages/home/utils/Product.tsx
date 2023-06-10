@@ -17,6 +17,10 @@ const ProductStyle = styled.li`
   justify-content: center;
 
   background-color: ${theme.gray[700]};
+
+  width: 23rem;
+  height: 23rem;
+  border-radius: 1rem;
 `
 
 export function Product({

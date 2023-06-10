@@ -11,6 +11,8 @@ const Separator = styled.span`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  margin-bottom: 2rem;
 `
 
 const LineStyle = styled.span`
@@ -39,7 +41,15 @@ export function Home() {
           <LineStyle />
         </Separator>
       </Container>
-      <CardProduct />
+      <Container
+        display="flex"
+        align="start"
+        justifyContent="center"
+        width="100%"
+        height=""
+      >
+        <CardProduct />
+      </Container>
     </LayoutBaseDePagina>
   )
 }

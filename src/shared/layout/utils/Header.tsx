@@ -8,9 +8,8 @@ const HeaderStyle = styled.header`
   align-items: center;
   justify-content: center;
   gap: 2rem;
-
   width: 100%;
-  height: 4rem;
+  padding: 1.5rem;
 
   background-color: ${theme.gray[700]};
   border-bottom: 1px solid ${theme.gray[500]};
