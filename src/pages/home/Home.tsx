@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { CardProduct } from '@/pages/home/utils/CardProduct'
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary, TTitlePrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout/LayoutBaseDePagina'
@@ -38,6 +39,7 @@ export function Home() {
           <LineStyle />
         </Separator>
       </Container>
+      <CardProduct />
     </LayoutBaseDePagina>
   )
 }
