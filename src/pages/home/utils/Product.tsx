@@ -1,3 +1,7 @@
+import styled from 'styled-components'
+
+import { theme } from '@/shared/theme'
+
 interface IProductProps {
   img: string
   price: number
@@ -7,6 +11,14 @@ interface IProductProps {
   discount?: number
 }
 
+const ProductStyle = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: ${theme.gray[700]};
+`
+
 export function Product({
   img,
   price,
@@ -14,5 +26,5 @@ export function Product({
   oldPrice,
   discount,
 }: IProductProps) {
-  return <></>
+  return <ProductStyle></ProductStyle>
 }
