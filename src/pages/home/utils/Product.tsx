@@ -2,8 +2,10 @@ import styled from 'styled-components'
 
 import { ButtonPrimary } from '@/shared/components/buttons/ButtonPrimary'
 import { Container } from '@/shared/components/container/Container'
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
+import { useContext } from 'react'
 
 interface IProductProps {
   img: string
@@ -14,7 +16,11 @@ interface IProductProps {
   discount?: number
 }
 
-const ProductStyle = styled.li`
+interface IProductStyleProps {
+  width: string
+}
+
+const ProductStyle = styled.li<IProductStyleProps>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -24,7 +30,7 @@ const ProductStyle = styled.li`
 
   background-color: ${theme.gray[700]};
 
-  width: 23rem;
+  width: ${(props) => props.width};
   height: 23rem;
   border-radius: 1rem;
 
@@ -48,8 +54,10 @@ export function Product({
   oldPrice,
   discount,
 }: IProductProps) {
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
+
   return (
-    <ProductStyle>
+    <ProductStyle width={windowWidth <= 450 ? '100%' : '23rem'}>
       <img src={img} alt="" className="img" />
       <Container
         display="flex"
@@ -73,7 +81,10 @@ export function Product({
         onClick={() => alert('Hello world')}
         className="button"
       >
-        <THeadingPrimary fontSize={1.5} txtColor="white">
+        <THeadingPrimary
+          fontSize={windowWidth <= 450 ? 1 : 1.5}
+          txtColor="white"
+        >
           Adicionar ao carrinho
         </THeadingPrimary>
       </ButtonPrimary>
