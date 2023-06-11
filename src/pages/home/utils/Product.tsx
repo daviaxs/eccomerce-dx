@@ -15,6 +15,7 @@ interface IProductProps {
 }
 
 const ProductStyle = styled.li`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +27,18 @@ const ProductStyle = styled.li`
   width: 23rem;
   height: 23rem;
   border-radius: 1rem;
+
+  .img {
+    width: 8rem;
+    border-radius: 0.5rem;
+  }
+
+  .button {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1rem;
+  }
 `
 
 export function Product({
@@ -37,7 +50,7 @@ export function Product({
 }: IProductProps) {
   return (
     <ProductStyle>
-      <img src={img} alt="" />
+      <img src={img} alt="" className="img" />
       <Container
         display="flex"
         flexDir="column"
@@ -54,7 +67,12 @@ export function Product({
           {description}
         </TTextPrimary>
       </Container>
-      <ButtonPrimary>
+      <ButtonPrimary
+        variant="purple"
+        width="90%"
+        onClick={() => alert('Hello world')}
+        className="button"
+      >
         <THeadingPrimary fontSize={1.5} txtColor="white">
           Adicionar ao carrinho
         </THeadingPrimary>
