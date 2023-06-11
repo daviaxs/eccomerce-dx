@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 
+import { ButtonPrimary } from '@/shared/components/buttons/ButtonPrimary'
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
@@ -53,6 +54,11 @@ export function Product({
           {description}
         </TTextPrimary>
       </Container>
+      <ButtonPrimary>
+        <THeadingPrimary fontSize={1.5} txtColor="white">
+          Adicionar ao carrinho
+        </THeadingPrimary>
+      </ButtonPrimary>
     </ProductStyle>
   )
 }
