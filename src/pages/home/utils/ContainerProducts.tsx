@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Product } from './Product'
 
-const ProductsContainer = styled.ul`
+const ContainerProductsStyle = styled.ul`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -11,9 +11,9 @@ const ProductsContainer = styled.ul`
   gap: 4rem;
 `
 
-export function CardProduct() {
+export function ContainerProducts() {
   return (
-    <ProductsContainer>
+    <ContainerProductsStyle>
       <Product
         key={1}
         img="http://http2.mlstatic.com/D_916456-MLA52626408897_112022-I.jpg"
@@ -50,6 +50,6 @@ export function CardProduct() {
         price={20}
         description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
       />
-    </ProductsContainer>
+    </ContainerProductsStyle>
   )
 }

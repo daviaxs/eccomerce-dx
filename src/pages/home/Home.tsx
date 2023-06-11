@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { CardProduct } from '@/pages/home/utils/CardProduct'
+import { ContainerProducts } from '@/pages/home/utils/ContainerProducts'
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary, TTitlePrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout/LayoutBaseDePagina'
@@ -48,7 +48,7 @@ export function Home() {
         width="100%"
         height=""
       >
-        <CardProduct />
+        <ContainerProducts />
       </Container>
     </LayoutBaseDePagina>
   )
