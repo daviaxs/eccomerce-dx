@@ -70,7 +70,26 @@ export function Product({
         marginBottom={1}
         marginTop={1}
       >
-        <THeadingPrimary txtColor={theme.gray[50]}>R$ {price}</THeadingPrimary>
+        <Container
+          display="flex"
+          flexDir="column"
+          gap={0.2}
+          width="100%"
+          height=""
+        >
+          <TTextPrimary
+            fontSize={1}
+            txtColor={theme.gray[400]}
+            txtDecoration="line-through"
+          >
+            R$ {oldPrice}
+          </TTextPrimary>
+
+          <THeadingPrimary txtColor={theme.gray[50]}>
+            R$ {price}
+          </THeadingPrimary>
+        </Container>
+
         <TTextPrimary fontSize={0.8} txtColor={theme.gray[50]}>
           {description}
         </TTextPrimary>

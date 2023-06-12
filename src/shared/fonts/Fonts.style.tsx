@@ -9,6 +9,7 @@ interface ITextProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   display?: 'flex' | 'none'
   className?: string
   whiteSpace?: 'nowrap' | 'normal'
+  txtDecoration?: string
   children: React.ReactNode
 }
 
@@ -58,6 +59,7 @@ const TTextPrimaryStyle = styled.p<ITextProps>`
 
   color: ${(props) => props.txtColor};
   text-shadow: ${(props) => props.txtShadow};
+  text-decoration-line: ${(props) => props.txtDecoration};
 `
 
 export const THeadingPrimary: React.FC<ITextProps> = ({
@@ -143,10 +145,12 @@ export const TTextPrimary: React.FC<ITextProps> = ({
   whiteSpace = 'normal',
   fontSize = 1,
   display,
+  txtDecoration,
   children,
 }) => {
   return (
     <TTextPrimaryStyle
+      txtDecoration={txtDecoration}
       txtColor={txtColor}
       txtShadow={txtShadow}
       textAlign={textAlign}

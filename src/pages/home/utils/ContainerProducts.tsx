@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react'
+import styled from 'styled-components'
+
 import { apiBaseUrl } from '@/shared/api/api'
 import { theme } from '@/shared/theme'
 import { Skeleton } from '@mui/material'
-import { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { Product } from './Product'
 
 interface IProductProps {
@@ -31,7 +32,6 @@ export function ContainerProducts() {
       setIsLoading(true)
       const response = await fetch(apiBaseUrl)
       const objJson = await response.json()
-      console.log(objJson)
       setData(objJson.results)
       setIsLoading(false)
     }
@@ -68,6 +68,7 @@ export function ContainerProducts() {
             img={e.thumbnail}
             price={e.price}
             description={e.title}
+            oldPrice={1500}
           />
         ))
       )}
