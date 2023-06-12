@@ -69,6 +69,7 @@ export function ContainerProducts() {
             price={e.price}
             description={e.title}
             oldPrice={1500}
+            discount={15}
           />
         ))
       )}

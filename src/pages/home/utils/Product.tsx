@@ -45,6 +45,10 @@ const ProductStyle = styled.li<IProductStyleProps>`
     bottom: 0;
     margin-bottom: 1rem;
   }
+
+  .discount {
+    margin-bottom: 0.4rem;
+  }
 `
 
 export function Product({
@@ -85,9 +89,18 @@ export function Product({
             R$ {oldPrice}
           </TTextPrimary>
 
-          <THeadingPrimary txtColor={theme.gray[50]}>
-            R$ {price}
-          </THeadingPrimary>
+          <Container display="flex" width="" height="" gap={0.2} align="end">
+            <THeadingPrimary txtColor={theme.gray[50]}>
+              R$ {price}
+            </THeadingPrimary>
+            <TTextPrimary
+              fontSize={0.75}
+              txtColor={theme.green[400]}
+              className="discount"
+            >
+              {discount}% OFF
+            </TTextPrimary>
+          </Container>
         </Container>
 
         <TTextPrimary fontSize={0.8} txtColor={theme.gray[50]}>
