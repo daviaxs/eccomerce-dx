@@ -1,3 +1,5 @@
+import { apiBaseUrl } from '@/shared/api/api'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Product } from './Product'
 
@@ -12,44 +14,28 @@ const ContainerProductsStyle = styled.ul`
 `
 
 export function ContainerProducts() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      const response = await fetch(apiBaseUrl)
+      const objJson = await response.json()
+      console.log(objJson)
+      setData(objJson.results)
+    }
+    fetchApi()
+  }, [])
+
   return (
     <ContainerProductsStyle>
-      <Product
-        key={1}
-        img="http://http2.mlstatic.com/D_916456-MLA52626408897_112022-I.jpg"
-        price={20}
-        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
-      />
-      <Product
-        key={1}
-        img=""
-        price={20}
-        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
-      />
-      <Product
-        key={1}
-        img=""
-        price={20}
-        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
-      />
-      <Product
-        key={1}
-        img=""
-        price={20}
-        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
-      />
-      <Product
-        key={1}
-        img=""
-        price={20}
-        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
-      />
-      <Product
-        key={1}
-        img=""
-        price={20}
-        description="Teclado Gamer Mecânico Cougar Lakshmi, Rainbow, Switch Blue, ABNT2, 60%, Black, K606R"
-      />
+      {data.map((e) => (
+        <Product
+          key={e.id}
+          img={e.thumbnail}
+          price={e.price}
+          description={e.title}
+        />
+      ))}
     </ContainerProductsStyle>
   )
 }
