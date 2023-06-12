@@ -5,7 +5,7 @@ import { apiBaseUrl } from '@/shared/api/api'
 import { theme } from '@/shared/theme'
 import { Skeleton } from '@mui/material'
 import { Product } from './Product'
-import { CalcDiscout } from './calcDiscount'
+import { CalcDiscout, roundNumber } from './calcDiscount'
 
 interface IProductProps {
   id: string
@@ -71,7 +71,11 @@ export function ContainerProducts() {
             price={e.price}
             description={e.title}
             oldPrice={e.original_price ? e.original_price : undefined}
-            discount={CalcDiscout(e.original_price, e.price)}
+            discount={
+              e.original_price
+                ? roundNumber(CalcDiscout(e.original_price, e.price))
+                : undefined
+            }
           />
         ))
       )}

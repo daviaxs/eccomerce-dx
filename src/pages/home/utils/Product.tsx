@@ -13,7 +13,7 @@ interface IProductProps {
   description: string
 
   oldPrice?: number | undefined
-  discount?: number
+  discount?: number | undefined
 }
 
 interface IProductStyleProps {
@@ -95,13 +95,15 @@ export function Product({
             <THeadingPrimary txtColor={theme.gray[50]}>
               R$ {price}
             </THeadingPrimary>
-            <TTextPrimary
-              fontSize={0.75}
-              txtColor={theme.green[400]}
-              className="discount"
-            >
-              {discount}% OFF
-            </TTextPrimary>
+            {oldPrice === undefined ? null : (
+              <TTextPrimary
+                fontSize={0.75}
+                txtColor={theme.green[400]}
+                className="discount"
+              >
+                {discount}% OFF
+              </TTextPrimary>
+            )}
           </Container>
         </Container>
 
