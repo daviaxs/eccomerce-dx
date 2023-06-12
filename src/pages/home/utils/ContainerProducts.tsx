@@ -11,6 +11,7 @@ interface IProductProps {
   title: string
   thumbnail: string
   price: number
+  original_price: number
 }
 
 const ContainerProductsStyle = styled.ul`
@@ -68,7 +69,7 @@ export function ContainerProducts() {
             img={e.thumbnail}
             price={e.price}
             description={e.title}
-            oldPrice={1500}
+            oldPrice={e.original_price ? e.original_price : undefined}
             discount={15}
           />
         ))

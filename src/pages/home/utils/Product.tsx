@@ -12,7 +12,7 @@ interface IProductProps {
   price: number
   description: string
 
-  oldPrice?: number
+  oldPrice?: number | undefined
   discount?: number
 }
 
@@ -81,13 +81,15 @@ export function Product({
           width="100%"
           height=""
         >
-          <TTextPrimary
-            fontSize={1}
-            txtColor={theme.gray[400]}
-            txtDecoration="line-through"
-          >
-            R$ {oldPrice}
-          </TTextPrimary>
+          {oldPrice === undefined ? null : (
+            <TTextPrimary
+              fontSize={1}
+              txtColor={theme.gray[400]}
+              txtDecoration="line-through"
+            >
+              R$ {oldPrice}
+            </TTextPrimary>
+          )}
 
           <Container display="flex" width="" height="" gap={0.2} align="end">
             <THeadingPrimary txtColor={theme.gray[50]}>
@@ -107,6 +109,7 @@ export function Product({
           {description}
         </TTextPrimary>
       </Container>
+
       <ButtonPrimary
         variant="purple"
         width="90%"
