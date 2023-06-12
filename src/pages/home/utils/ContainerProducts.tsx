@@ -1,4 +1,6 @@
 import { apiBaseUrl } from '@/shared/api/api'
+import { theme } from '@/shared/theme'
+import { Skeleton } from '@mui/material'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Product } from './Product'
@@ -21,28 +23,54 @@ const ContainerProductsStyle = styled.ul`
 `
 
 export function ContainerProducts() {
+  const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState([])
 
   useEffect(() => {
     const fetchApi = async () => {
+      setIsLoading(true)
       const response = await fetch(apiBaseUrl)
       const objJson = await response.json()
       console.log(objJson)
       setData(objJson.results)
+      setIsLoading(false)
     }
     fetchApi()
   }, [])
 
   return (
     <ContainerProductsStyle>
-      {data.map((e: IProductProps) => (
-        <Product
-          key={e.id}
-          img={e.thumbnail}
-          price={e.price}
-          description={e.title}
-        />
-      ))}
+      {isLoading ? (
+        <>
+          <Skeleton
+            variant="rounded"
+            width={320}
+            height={320}
+            style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
+          />
+          <Skeleton
+            variant="rounded"
+            width={320}
+            height={320}
+            style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
+          />
+          <Skeleton
+            variant="rounded"
+            width={320}
+            height={320}
+            style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
+          />
+        </>
+      ) : (
+        data.map((e: IProductProps) => (
+          <Product
+            key={e.id}
+            img={e.thumbnail}
+            price={e.price}
+            description={e.title}
+          />
+        ))
+      )}
     </ContainerProductsStyle>
   )
 }
