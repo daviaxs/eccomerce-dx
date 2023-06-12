@@ -31,6 +31,7 @@ const ButtonPrimaryStyle = styled.button<IButtonPrimaryProps>`
     outline: 0.063rem solid
       ${(props) =>
         props.variant === 'purple' ? theme.purple[300] : theme.green[300]};
+    cursor: pointer;
   }
 
   &:focus-visible {
