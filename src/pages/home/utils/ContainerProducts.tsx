@@ -3,6 +3,13 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Product } from './Product'
 
+interface IProductProps {
+  id: string
+  title: string
+  thumbnail: string
+  price: number
+}
+
 const ContainerProductsStyle = styled.ul`
   display: flex;
   flex-wrap: wrap;
@@ -28,7 +35,7 @@ export function ContainerProducts() {
 
   return (
     <ContainerProductsStyle>
-      {data.map((e) => (
+      {data.map((e: IProductProps) => (
         <Product
           key={e.id}
           img={e.thumbnail}
