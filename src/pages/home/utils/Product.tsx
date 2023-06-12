@@ -48,6 +48,9 @@ const ProductStyle = styled.li<IProductStyleProps>`
 
   .discount {
     margin-bottom: 0.4rem;
+    @media screen and (max-width: 450px) {
+      margin-bottom: 0.2rem;
+    }
   }
 `
 
@@ -92,7 +95,10 @@ export function Product({
           )}
 
           <Container display="flex" width="" height="" gap={0.2} align="end">
-            <THeadingPrimary txtColor={theme.gray[50]}>
+            <THeadingPrimary
+              txtColor={theme.gray[50]}
+              fontSize={windowWidth <= 450 ? 1.5 : 2}
+            >
               R$ {price}
             </THeadingPrimary>
             {oldPrice === undefined ? null : (
