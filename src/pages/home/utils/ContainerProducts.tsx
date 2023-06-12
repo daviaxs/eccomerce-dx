@@ -46,20 +46,20 @@ export function ContainerProducts() {
         <>
           <Skeleton
             variant="rounded"
-            width={320}
-            height={320}
+            width={365}
+            height={365}
             style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
           />
           <Skeleton
             variant="rounded"
-            width={320}
-            height={320}
+            width={365}
+            height={365}
             style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
           />
           <Skeleton
             variant="rounded"
-            width={320}
-            height={320}
+            width={365}
+            height={365}
             style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
           />
         </>
