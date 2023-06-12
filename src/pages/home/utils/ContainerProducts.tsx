@@ -5,6 +5,7 @@ import { apiBaseUrl } from '@/shared/api/api'
 import { theme } from '@/shared/theme'
 import { Skeleton } from '@mui/material'
 import { Product } from './Product'
+import { CalcDiscout } from './calcDiscount'
 
 interface IProductProps {
   id: string
@@ -70,7 +71,7 @@ export function ContainerProducts() {
             price={e.price}
             description={e.title}
             oldPrice={e.original_price ? e.original_price : undefined}
-            discount={15}
+            discount={CalcDiscout(e.original_price, e.price)}
           />
         ))
       )}
