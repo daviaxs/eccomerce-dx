@@ -16,7 +16,7 @@ const HeaderStyle = styled.header`
   gap: 2rem;
   width: 100%;
   height: 4rem;
-  padding: 1.5rem;
+  padding: 2rem;
 
   background-color: ${theme.gray[700]};
   border-bottom: 1px solid ${theme.gray[500]};
@@ -24,6 +24,12 @@ const HeaderStyle = styled.header`
   .logo {
     position: absolute;
     width: 4rem;
+    left: 0;
+    margin-left: 1rem;
+  }
+
+  .icon {
+    position: absolute;
     left: 0;
     margin-left: 1rem;
   }
@@ -41,7 +47,7 @@ export function Header() {
           <NavButton to="/faq">FAQ</NavButton>
         </>
       ) : (
-        <IconButton>
+        <IconButton borderRadius={9999} size={2.9} className="icon">
           <OptionsIcon color={theme.gray[100]} size={30} />
         </IconButton>
       )}

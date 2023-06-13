@@ -2,19 +2,23 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface IIconButtonProps {
+  size: number
+  borderRadius: number
+  display?: 'flex' | 'none'
+  className?: string
   children: React.ReactNode
 }
 
-const IconButtonStyle = styled.button`
-  display: flex;
+const IconButtonStyle = styled.button<IIconButtonProps>`
+  display: ${(props) => props.display};
   align-items: center;
   justify-content: center;
 
   border: none;
   border-radius: 9999px;
 
-  height: 50px;
-  width: 50px;
+  height: ${(props) => props.size}rem;
+  width: ${(props) => props.size}rem;
 
   background-color: transparent;
   transition: all 0.1s ease-out;
@@ -29,6 +33,21 @@ const IconButtonStyle = styled.button`
   }
 `
 
-export function IconButton({ children }: IIconButtonProps) {
-  return <IconButtonStyle>{children}</IconButtonStyle>
+export function IconButton({
+  size,
+  borderRadius,
+  display,
+  className,
+  children,
+}: IIconButtonProps) {
+  return (
+    <IconButtonStyle
+      size={size}
+      display={display}
+      borderRadius={borderRadius}
+      className={className}
+    >
+      {children}
+    </IconButtonStyle>
+  )
 }
