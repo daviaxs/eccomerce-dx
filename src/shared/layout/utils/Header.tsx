@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import styled from 'styled-components'
 
+import { OptionsIcon } from '@/shared/assets/OptionsIcon'
 import LogoDX from '@/shared/assets/logo-page.png'
 import { NavButton } from '@/shared/components/navButton/NavButton'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
@@ -32,14 +33,14 @@ export function Header() {
 
   return (
     <HeaderStyle>
-      {windowWidth >= 600 && (
+      {windowWidth >= 600 ? (
         <>
           <img src={LogoDX} alt="Logo DX" className="logo" />
           <NavButton to="/pagina-inicial">Página inicial</NavButton>
           <NavButton to="/faq">FAQ</NavButton>
         </>
       ) : (
-        
+        <OptionsIcon color={theme.gray[100]} size={30} />
       )}
     </HeaderStyle>
   )
