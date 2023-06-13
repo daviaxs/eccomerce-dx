@@ -5,6 +5,7 @@ import { OptionsIcon } from '@/shared/assets/OptionsIcon'
 import LogoDX from '@/shared/assets/logo-page.png'
 import { IconButton } from '@/shared/components/iconButton/IconButton'
 import { NavButton } from '@/shared/components/navButton/NavButton'
+import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { theme } from '@/shared/theme'
 
@@ -38,6 +39,7 @@ const HeaderStyle = styled.header`
 
 export function Header() {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
+  const { toggleMenuNav } = useMenuNavContext()
 
   return (
     <HeaderStyle>
@@ -48,7 +50,12 @@ export function Header() {
           <NavButton to="/faq">FAQ</NavButton>
         </>
       ) : (
-        <IconButton borderRadius={9999} size={2.9} className="icon">
+        <IconButton
+          onClick={toggleMenuNav}
+          borderRadius={9999}
+          size={2.9}
+          className="icon"
+        >
           <OptionsIcon color={theme.gray[100]} size={30} />
         </IconButton>
       )}

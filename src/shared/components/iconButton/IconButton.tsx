@@ -7,6 +7,7 @@ interface IIconButtonProps {
   display?: 'flex' | 'none'
   className?: string
   children: React.ReactNode
+  onClick: () => void
 }
 
 const IconButtonStyle = styled.button<IIconButtonProps>`
@@ -39,9 +40,11 @@ export function IconButton({
   display,
   className,
   children,
+  onClick,
 }: IIconButtonProps) {
   return (
     <IconButtonStyle
+      onClick={onClick}
       size={size}
       display={display}
       borderRadius={borderRadius}
