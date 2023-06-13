@@ -9,7 +9,7 @@ import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsConte
 import { theme } from '@/shared/theme'
 
 const HeaderStyle = styled.header`
-  position: relative;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,6 +20,7 @@ const HeaderStyle = styled.header`
 
   background-color: ${theme.gray[700]};
   border-bottom: 1px solid ${theme.gray[500]};
+  z-index: 2;
 
   .logo {
     position: absolute;

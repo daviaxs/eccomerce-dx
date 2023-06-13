@@ -27,6 +27,7 @@ export function LayoutBaseDePagina({ children }: ILayoutBaseDePaginaProps) {
         height="100%"
         width="100%"
         padding={2}
+        marginTop={4}
       >
         {children}
       </Container>
