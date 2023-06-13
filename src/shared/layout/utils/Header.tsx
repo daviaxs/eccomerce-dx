@@ -33,10 +33,14 @@ export function Header() {
   return (
     <HeaderStyle>
       {windowWidth >= 600 && (
-        <img src={LogoDX} alt="Logo DX" className="logo" />
+        <>
+          <img src={LogoDX} alt="Logo DX" className="logo" />
+          <NavButton to="/pagina-inicial">Página inicial</NavButton>
+          <NavButton to="/faq">FAQ</NavButton>
+        </>
+      ) : (
+        
       )}
-      <NavButton to="/pagina-inicial">Página inicial</NavButton>
-      <NavButton to="/faq">FAQ</NavButton>
     </HeaderStyle>
   )
 }
