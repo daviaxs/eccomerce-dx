@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { OptionsIcon } from '@/shared/assets/OptionsIcon'
 import LogoDX from '@/shared/assets/logo-page.png'
+import { IconButton } from '@/shared/components/iconButton/IconButton'
 import { NavButton } from '@/shared/components/navButton/NavButton'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { theme } from '@/shared/theme'
@@ -40,7 +41,9 @@ export function Header() {
           <NavButton to="/faq">FAQ</NavButton>
         </>
       ) : (
-        <OptionsIcon color={theme.gray[100]} size={30} />
+        <IconButton>
+          <OptionsIcon color={theme.gray[100]} size={30} />
+        </IconButton>
       )}
     </HeaderStyle>
   )
