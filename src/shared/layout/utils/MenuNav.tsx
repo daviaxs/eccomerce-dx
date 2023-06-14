@@ -1,3 +1,4 @@
+import { NavButtonMobile } from '@/shared/components/navButton/NavButtonMobile'
 import { theme } from '@/shared/theme'
 import styled from 'styled-components'
 
@@ -10,8 +11,8 @@ const MenuNavStyle = styled.div`
   z-index: 1;
 
   display: flex;
-  align-items: center;
-  justify-content: start;
+  align-items: start;
+  padding: 2rem;
 `
 
 const NavContainer = styled.nav`
@@ -19,12 +20,15 @@ const NavContainer = styled.nav`
   align-items: center;
   justify-content: start;
   gap: 1.5rem;
+  width: 100%;
 `
 
 export function MenuNav() {
   return (
     <MenuNavStyle>
-      <NavContainer></NavContainer>
+      <NavContainer>
+        <NavButtonMobile>a</NavButtonMobile>
+      </NavContainer>
     </MenuNavStyle>
   )
 }
