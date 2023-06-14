@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 
 interface INavButtonMobileProps {
@@ -11,8 +10,9 @@ interface INavButtonMobileProps {
 const NavButtonMobileStyle = styled.button`
   display: flex;
   align-items: center;
+  justify-content: start;
   padding: 0.625rem 1rem;
-  gap: 1.25rem;
+  gap: 1rem;
   background-color: ${theme.gray[700]};
   color: ${theme.gray[50]};
   border-radius: 0.5rem;
@@ -24,9 +24,5 @@ const NavButtonMobileStyle = styled.button`
 `
 
 export function NavButtonMobile({ children }: INavButtonMobileProps) {
-  return (
-    <NavButtonMobileStyle>
-      <THeadingSecondary fontSize={1.5}>{children}</THeadingSecondary>
-    </NavButtonMobileStyle>
-  )
+  return <NavButtonMobileStyle>{children}</NavButtonMobileStyle>
 }

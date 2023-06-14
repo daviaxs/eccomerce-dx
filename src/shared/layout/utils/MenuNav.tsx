@@ -1,5 +1,7 @@
 import { NavButtonMobile } from '@/shared/components/navButton/NavButtonMobile'
+import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
+import { LucideHome } from 'lucide-react'
 import styled from 'styled-components'
 
 const MenuNavStyle = styled.div`
@@ -27,7 +29,10 @@ export function MenuNav() {
   return (
     <MenuNavStyle>
       <NavContainer>
-        <NavButtonMobile>a</NavButtonMobile>
+        <NavButtonMobile>
+          <LucideHome size={32} />
+          <THeadingSecondary fontSize={1.3}>Página inicial</THeadingSecondary>
+        </NavButtonMobile>
       </NavContainer>
     </MenuNavStyle>
   )

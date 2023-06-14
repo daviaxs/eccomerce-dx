@@ -60,11 +60,7 @@ const NavButtonStyle = styled.button<INavButtonProps>`
   }
 `
 
-export const NavButton: React.FC<INavButtonProps> = ({
-  to,
-  children,
-  ...rest
-}) => {
+export function NavButton({ children, to, ...rest }: INavButtonProps) {
   return (
     <NavLink to={to}>
       {(props) => (
