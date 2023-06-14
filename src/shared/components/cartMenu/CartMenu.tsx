@@ -1,3 +1,3 @@
-export function CartDrawer() {
+export function CartMenu() {
   return <></>
 }
