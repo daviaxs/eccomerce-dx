@@ -1,8 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { theme } from '@/shared/theme'
-import { NavLink } from 'react-router-dom'
 
 interface INavButtonMobileProps {
   to: string

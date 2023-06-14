@@ -1,10 +1,14 @@
-import { NavButtonMobile } from '@/shared/components/navButton/NavButtonMobile'
-import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
-import { theme } from '@/shared/theme'
 import { LucideHome, Newspaper } from 'lucide-react'
+import { useContext } from 'react'
 import styled from 'styled-components'
 
-const MenuNavStyle = styled.div`
+import { NavButtonMobile } from '@/shared/components/navButton/NavButtonMobile'
+import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
+import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
+import { theme } from '@/shared/theme'
+
+const MenuNavStyle = styled.div<{ display: 'flex' | 'none' }>`
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -12,7 +16,7 @@ const MenuNavStyle = styled.div`
   margin-top: 4rem;
   z-index: 1;
 
-  display: flex;
+  display: ${(props) => props.display};
   align-items: start;
   padding: 2rem;
 `
@@ -26,8 +30,13 @@ const NavContainer = styled.nav`
 `
 
 export function MenuNav() {
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
+  const { expandedMenu } = useMenuNavContext()
+
   return (
-    <MenuNavStyle>
+    <MenuNavStyle
+      display={windowWidth <= 600 && expandedMenu ? 'flex' : 'none'}
+    >
       <NavContainer>
         <NavButtonMobile to="/pagina-inicial">
           <LucideHome size={32} />
