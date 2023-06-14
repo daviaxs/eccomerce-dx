@@ -10,7 +10,7 @@ interface INavButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
 }
 
-const NavButtonStyle = styled.button<INavButtonProps>`
+const NavButtonStyle = styled.button`
   display: flex;
   align-items: center;
   position: relative;
@@ -66,7 +66,6 @@ export function NavButton({ children, to, ...rest }: INavButtonProps) {
       {(props) => (
         <NavButtonStyle
           className={props.isActive ? 'active' : 'inactive'}
-          to={to}
           {...rest}
         >
           <THeadingSecondary txtColor={theme.gray[50]} fontSize={1}>

@@ -1,7 +1,7 @@
 import { NavButtonMobile } from '@/shared/components/navButton/NavButtonMobile'
 import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
-import { LucideHome } from 'lucide-react'
+import { LucideHome, Newspaper } from 'lucide-react'
 import styled from 'styled-components'
 
 const MenuNavStyle = styled.div`
@@ -19,8 +19,8 @@ const MenuNavStyle = styled.div`
 
 const NavContainer = styled.nav`
   display: flex;
-  align-items: center;
-  justify-content: start;
+  flex-direction: column;
+  align-items: start;
   gap: 1.5rem;
   width: 100%;
 `
@@ -29,9 +29,13 @@ export function MenuNav() {
   return (
     <MenuNavStyle>
       <NavContainer>
-        <NavButtonMobile>
+        <NavButtonMobile to="/pagina-inicial">
           <LucideHome size={32} />
           <THeadingSecondary fontSize={1.3}>Página inicial</THeadingSecondary>
+        </NavButtonMobile>
+        <NavButtonMobile to="/faq">
+          <Newspaper size={32} />
+          <THeadingSecondary fontSize={1.3}>FAQ</THeadingSecondary>
         </NavButtonMobile>
       </NavContainer>
     </MenuNavStyle>

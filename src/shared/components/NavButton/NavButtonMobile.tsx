@@ -2,8 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { theme } from '@/shared/theme'
+import { NavLink } from 'react-router-dom'
 
 interface INavButtonMobileProps {
+  to: string
   children: React.ReactNode
 }
 
@@ -21,8 +23,36 @@ const NavButtonMobileStyle = styled.button`
   height: 5rem;
 
   border: none;
+  cursor: pointer;
+
+  &&:hover {
+    transform: scale(1.05);
+  }
+
+  &.inactive {
+    opacity: 60%;
+  }
+
+  &.inactive:hover {
+    opacity: 80%;
+  }
 `
 
-export function NavButtonMobile({ children }: INavButtonMobileProps) {
-  return <NavButtonMobileStyle>{children}</NavButtonMobileStyle>
+export function NavButtonMobile({
+  children,
+  to,
+  ...rest
+}: INavButtonMobileProps) {
+  return (
+    <NavLink to={to} style={{ width: '100%' }}>
+      {(props) => (
+        <NavButtonMobileStyle
+          className={props.isActive ? 'active' : 'inactive'}
+          {...rest}
+        >
+          {children}
+        </NavButtonMobileStyle>
+      )}
+    </NavLink>
+  )
 }
