@@ -1,3 +1,4 @@
+import { ArrowLeft } from 'lucide-react'
 import { useContext } from 'react'
 import styled from 'styled-components'
 
@@ -39,7 +40,7 @@ const HeaderStyle = styled.header`
 
 export function Header() {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
-  const { toggleMenuNav } = useMenuNavContext()
+  const { toggleMenuNav, expandedMenu } = useMenuNavContext()
 
   return (
     <HeaderStyle>
@@ -56,7 +57,11 @@ export function Header() {
           size={2.9}
           className="icon"
         >
-          <OptionsIcon color={theme.gray[100]} size={30} />
+          {expandedMenu ? (
+            <ArrowLeft color={theme.gray[100]} size={30} />
+          ) : (
+            <OptionsIcon color={theme.gray[100]} size={30} />
+          )}
         </IconButton>
       )}
     </HeaderStyle>
