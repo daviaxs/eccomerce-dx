@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { Container } from '@/shared/components/container/Container'
 import { Header } from '@/shared/layout/utils/Header'
+import { MenuNav } from './utils/MenuNav'
 
 interface ILayoutBaseDePaginaProps {
   children: React.ReactNode
@@ -21,6 +22,7 @@ export function LayoutBaseDePagina({ children }: ILayoutBaseDePaginaProps) {
   return (
     <Box>
       <Header />
+      <MenuNav />
       <Container
         display="flex"
         flexDir="column"
