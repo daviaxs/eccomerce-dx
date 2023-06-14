@@ -8,6 +8,7 @@ import { IconButton } from '@/shared/components/iconButton/IconButton'
 import { NavButton } from '@/shared/components/navButton/NavButton'
 import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
+import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 
 const HeaderStyle = styled.header`
@@ -51,18 +52,25 @@ export function Header() {
           <NavButton to="/faq">FAQ</NavButton>
         </>
       ) : (
-        <IconButton
-          onClick={toggleMenuNav}
-          borderRadius={9999}
-          size={2.9}
-          className="icon"
-        >
-          {expandedMenu ? (
-            <ArrowLeft color={theme.gray[100]} size={30} />
-          ) : (
-            <OptionsIcon color={theme.gray[100]} size={30} />
+        <>
+          {expandedMenu && (
+            <THeadingSecondary fontSize={1.5} txtColor={theme.gray[100]}>
+              Navegar
+            </THeadingSecondary>
           )}
-        </IconButton>
+          <IconButton
+            onClick={toggleMenuNav}
+            borderRadius={9999}
+            size={2.9}
+            className="icon"
+          >
+            {expandedMenu ? (
+              <ArrowLeft color={theme.gray[100]} size={30} />
+            ) : (
+              <OptionsIcon color={theme.gray[100]} size={30} />
+            )}
+          </IconButton>
+        </>
       )}
     </HeaderStyle>
   )
