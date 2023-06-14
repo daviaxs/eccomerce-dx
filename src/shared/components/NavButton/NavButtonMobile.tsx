@@ -24,6 +24,7 @@ const NavButtonMobileStyle = styled.button`
 
   border: none;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 
   &&:hover {
     transform: scale(1.05);
