@@ -65,6 +65,7 @@ export function Header() {
               Navegar
             </THeadingSecondary>
           )}
+          {!expandedMenu && <ButtonCart />}
           <IconButton
             onClick={toggleMenuNav}
             borderRadius={9999}
