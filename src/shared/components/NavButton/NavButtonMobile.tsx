@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { theme } from '@/shared/theme'
 
 interface INavButtonMobileProps {
@@ -44,8 +45,10 @@ export function NavButtonMobile({
   to,
   ...rest
 }: INavButtonMobileProps) {
+  const { toggleMenuNav } = useMenuNavContext()
+
   return (
-    <NavLink to={to} style={{ width: '100%' }}>
+    <NavLink to={to} style={{ width: '100%' }} onClick={toggleMenuNav}>
       {(props) => (
         <NavButtonMobileStyle
           className={props.isActive ? 'active' : 'inactive'}
