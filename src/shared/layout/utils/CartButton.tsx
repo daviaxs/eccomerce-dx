@@ -1,3 +1,4 @@
+import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
 import { theme } from '@/shared/theme'
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
 import styled from 'styled-components'
@@ -41,8 +42,10 @@ const CartButtonStyle = styled.button`
 `
 
 export function CartButton() {
+  const { toggleCartMenu } = useCartMenuContext()
+
   return (
-    <CartButtonStyle className="CartButton">
+    <CartButtonStyle className="CartButton" onClick={toggleCartMenu}>
       <ChevronLeft color={theme.gray[100]} className="arrowIcon" />
       <ShoppingCart color={theme.gray[100]} />
     </CartButtonStyle>
