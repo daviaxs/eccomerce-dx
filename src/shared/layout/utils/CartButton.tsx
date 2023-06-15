@@ -2,7 +2,7 @@ import { theme } from '@/shared/theme'
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
 import styled from 'styled-components'
 
-const ButtonCartStyle = styled.button`
+const CartButtonStyle = styled.button`
   display: flex;
   align-items: center;
   justify-content: end;
@@ -40,11 +40,11 @@ const ButtonCartStyle = styled.button`
   }
 `
 
-export function ButtonCart() {
+export function CartButton() {
   return (
-    <ButtonCartStyle className="buttonCart">
+    <CartButtonStyle className="CartButton">
       <ChevronLeft color={theme.gray[100]} className="arrowIcon" />
       <ShoppingCart color={theme.gray[100]} />
-    </ButtonCartStyle>
+    </CartButtonStyle>
   )
 }

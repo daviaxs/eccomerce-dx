@@ -10,7 +10,7 @@ import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
-import { ButtonCart } from './ButtonCart'
+import { CartButton } from './CartButton'
 
 const HeaderStyle = styled.header`
   position: fixed;
@@ -33,7 +33,7 @@ const HeaderStyle = styled.header`
     margin-left: 1rem;
   }
 
-  .buttonCart {
+  .CartButton {
     position: absolute;
     right: 0;
   }
@@ -56,7 +56,7 @@ export function Header() {
           <img src={LogoDX} alt="Logo DX" className="logo" />
           <NavButton to="/pagina-inicial">Página inicial</NavButton>
           <NavButton to="/faq">FAQ</NavButton>
-          <ButtonCart />
+          <CartButton />
         </>
       ) : (
         <>
@@ -65,7 +65,7 @@ export function Header() {
               Navegar
             </THeadingSecondary>
           )}
-          {!expandedMenu && <ButtonCart />}
+          {!expandedMenu && <CartButton />}
           <IconButton
             onClick={toggleMenuNav}
             borderRadius={9999}
