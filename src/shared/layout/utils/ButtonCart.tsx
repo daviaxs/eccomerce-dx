@@ -24,7 +24,7 @@ const ButtonCartStyle = styled.button`
   }
 
   &:hover .arrowIcon {
-    animation: position infinite ease-in 0.8s;
+    animation: position backwards ease-in 0.5s;
 
     @keyframes position {
       0% {
