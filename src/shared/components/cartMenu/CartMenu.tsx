@@ -6,7 +6,7 @@ const CartMenuBG = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: #00000038;
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 10;
 
   &.open {
@@ -18,9 +18,22 @@ const CartMenuBG = styled.div`
   }
 
   @keyframes bgIn {
+    0% {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 
-  @keyframes bhOut {
+  @keyframes bgOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      background-color: rgba(0, 0, 0, 0);
+      visibility: hidden;
+    }
   }
 `
 
@@ -39,9 +52,9 @@ export function CartMenu() {
     !expandedCartMenu ?? setShouldRenderCartMenu(false)
   }, [expandedCartMenu])
 
-  if (!shouldRenderCartMenu) {
-    return null
-  }
+  // if (!shouldRenderCartMenu) {
+  //   return null
+  // }
 
   return (
     <CartMenuBG
