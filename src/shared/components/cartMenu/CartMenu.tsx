@@ -8,6 +8,20 @@ const CartMenuBG = styled.div`
   height: 100vh;
   background-color: #00000038;
   z-index: 10;
+
+  &.open {
+    animation: bgIn 0.3s forwards ease-out;
+  }
+
+  &.close {
+    animation: bgOut 0.3s forwards ease-out;
+  }
+
+  @keyframes bgIn {
+  }
+
+  @keyframes bhOut {
+  }
 `
 
 const CartMenuStyle = styled.div``
@@ -25,8 +39,15 @@ export function CartMenu() {
     !expandedCartMenu ?? setShouldRenderCartMenu(false)
   }, [expandedCartMenu])
 
+  if (!shouldRenderCartMenu) {
+    return null
+  }
+
   return (
-    <CartMenuBG>
+    <CartMenuBG
+      className={expandedCartMenu ? 'open' : 'close'}
+      onAnimationEnd={handleAnimationEnd}
+    >
       <CartMenuStyle></CartMenuStyle>
     </CartMenuBG>
   )
