@@ -1,4 +1,5 @@
 import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
+import { theme } from '@/shared/theme'
 import { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
@@ -37,7 +38,14 @@ const CartMenuBG = styled.div`
   }
 `
 
-const CartMenuStyle = styled.div``
+const CartMenuStyle = styled.div`
+  position: fixed;
+  right: 0;
+
+  background-color: ${theme.gray[500]};
+  height: 100%;
+  width: 26rem;
+`
 
 export function CartMenu() {
   const { expandedCartMenu } = useCartMenuContext()
@@ -61,7 +69,9 @@ export function CartMenu() {
       className={expandedCartMenu ? 'open' : 'close'}
       onAnimationEnd={handleAnimationEnd}
     >
-      <CartMenuStyle></CartMenuStyle>
+      <CartMenuStyle
+        className={expandedCartMenu ? 'open' : 'close'}
+      ></CartMenuStyle>
     </CartMenuBG>
   )
 }
