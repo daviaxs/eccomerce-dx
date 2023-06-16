@@ -2,6 +2,7 @@ import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
 import { theme } from '@/shared/theme'
 import { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { ButtonClose } from './utils/ButtonClose'
 
 const CartMenuBG = styled.div`
   position: fixed;
@@ -45,6 +46,32 @@ const CartMenuStyle = styled.div`
   background-color: ${theme.gray[500]};
   height: 100%;
   width: 26rem;
+
+  &.open {
+    animation: menuAnimationIn 0.3s forwards ease-out;
+  }
+
+  &.close {
+    animation: menuAnimationOut 0.3s forwards ease-out;
+  }
+
+  @keyframes menuAnimationIn {
+    0% {
+      right: -26rem;
+    }
+    100% {
+      right: 0;
+    }
+  }
+
+  @keyframes menuAnimationOut {
+    0% {
+      right: 0;
+    }
+    100% {
+      right: -26rem;
+    }
+  }
 `
 
 export function CartMenu() {
@@ -69,9 +96,9 @@ export function CartMenu() {
       className={expandedCartMenu ? 'open' : 'close'}
       onAnimationEnd={handleAnimationEnd}
     >
-      <CartMenuStyle
-        className={expandedCartMenu ? 'open' : 'close'}
-      ></CartMenuStyle>
+      <CartMenuStyle className={expandedCartMenu ? 'open' : 'close'}>
+        <ButtonClose />
+      </CartMenuStyle>
     </CartMenuBG>
   )
 }
