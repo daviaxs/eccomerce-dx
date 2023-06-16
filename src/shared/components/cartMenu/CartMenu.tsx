@@ -79,17 +79,21 @@ export function CartMenu() {
   // eslint-disable-next-line prettier/prettier
   const [shouldRenderCartMenu, setShouldRenderCartMenu] = useState(expandedCartMenu)
 
-  useEffect(() => {
-    expandedCartMenu ?? setShouldRenderCartMenu(true)
-  }, [expandedCartMenu])
+  useEffect(
+    () => (expandedCartMenu ? setShouldRenderCartMenu(true) : undefined),
+    [expandedCartMenu],
+  )
 
-  const handleAnimationEnd = useCallback(() => {
-    !expandedCartMenu ?? setShouldRenderCartMenu(false)
-  }, [expandedCartMenu])
+  const handleAnimationEnd = useCallback(
+    () => (!expandedCartMenu ? setShouldRenderCartMenu(false) : null),
+    [expandedCartMenu],
+  )
 
-  // if (!shouldRenderCartMenu) {
-  //   return null
-  // }
+  if (!shouldRenderCartMenu) {
+    return null
+  }
+
+  console.log(expandedCartMenu)
 
   return (
     <CartMenuBG
