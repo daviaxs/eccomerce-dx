@@ -75,7 +75,7 @@ const CartMenuStyle = styled.div`
 `
 
 export function CartMenu() {
-  const { expandedCartMenu } = useCartMenuContext()
+  const { expandedCartMenu, toggleCartMenu } = useCartMenuContext()
   // eslint-disable-next-line prettier/prettier
   const [shouldRenderCartMenu, setShouldRenderCartMenu] = useState(expandedCartMenu)
 
@@ -101,7 +101,7 @@ export function CartMenu() {
       onAnimationEnd={handleAnimationEnd}
     >
       <CartMenuStyle className={expandedCartMenu ? 'open' : 'close'}>
-        <ButtonClose />
+        <ButtonClose onClick={toggleCartMenu} />
       </CartMenuStyle>
     </CartMenuBG>
   )
