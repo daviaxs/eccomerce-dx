@@ -13,6 +13,7 @@ const MenuNavStyle = styled.div<{ display: 'flex' | 'none' }>`
   width: 100vw;
   height: 100vh;
   background-color: ${theme.gray[900]};
+  overflow-x: scroll;
   margin-top: 4rem;
   z-index: 1;
 
@@ -27,6 +28,7 @@ const NavContainer = styled.nav`
   align-items: start;
   gap: 1.5rem;
   width: 100%;
+  padding-bottom: 4rem;
 `
 
 export function MenuNav() {
