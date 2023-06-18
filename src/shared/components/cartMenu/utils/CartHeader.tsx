@@ -12,6 +12,8 @@ const CartHeaderStyle = styled.header`
 
   background-color: ${theme.gray[600]};
   padding: 1.5rem;
+
+  position: fixed;
 `
 
 export function CartHeader() {

@@ -21,6 +21,7 @@ const ButtonCloseStyle = styled.button`
   position: absolute;
   left: -1.2rem;
   top: 2.8rem;
+  z-index: 2;
 `
 
 export function ButtonClose({ onClick }: IButtonCloseProps) {
