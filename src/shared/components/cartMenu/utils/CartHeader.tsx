@@ -1,3 +1,4 @@
+import { TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 import styled from 'styled-components'
 
@@ -14,5 +15,11 @@ const CartHeaderStyle = styled.header`
 `
 
 export function CartHeader() {
-  return <CartHeaderStyle></CartHeaderStyle>
+  return (
+    <CartHeaderStyle>
+      <TTextPrimary fontSize={1}>
+        Seu carrinho tem <strong>4 itens!</strong>
+      </TTextPrimary>
+    </CartHeaderStyle>
+  )
 }
