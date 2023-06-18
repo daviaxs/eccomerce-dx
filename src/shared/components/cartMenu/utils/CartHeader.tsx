@@ -11,6 +11,7 @@ const CartHeaderStyle = styled.header`
   height: 3.5rem;
 
   background-color: ${theme.gray[600]};
+  border-bottom: 1px solid ${theme.gray[400]};
   padding: 1.5rem;
 
   position: fixed;
