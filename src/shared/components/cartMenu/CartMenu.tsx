@@ -103,6 +103,7 @@ export function CartMenu() {
       <CartMenuStyle className={expandedCartMenu ? 'open' : 'close'}>
         <ButtonClose onClick={toggleCartMenu} />
       </CartMenuStyle>
+      
     </CartMenuBG>
   )
 }
