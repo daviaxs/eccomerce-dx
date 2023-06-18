@@ -94,8 +94,6 @@ export function CartMenu() {
     return null
   }
 
-  console.log(expandedCartMenu)
-
   return (
     <CartMenuBG
       className={expandedCartMenu ? 'open' : 'close'}

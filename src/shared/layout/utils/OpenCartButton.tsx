@@ -3,7 +3,7 @@ import { theme } from '@/shared/theme'
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
 import styled from 'styled-components'
 
-const CartButtonStyle = styled.button`
+const OpenCartButtonStyle = styled.button`
   display: flex;
   align-items: center;
   justify-content: end;
@@ -41,13 +41,13 @@ const CartButtonStyle = styled.button`
   }
 `
 
-export function CartButton() {
+export function OpenCartButton() {
   const { toggleCartMenu } = useCartMenuContext()
 
   return (
-    <CartButtonStyle className="CartButton" onClick={toggleCartMenu}>
+    <OpenCartButtonStyle className="OpenCartButton" onClick={toggleCartMenu}>
       <ChevronLeft color={theme.gray[100]} className="arrowIcon" />
       <ShoppingCart color={theme.gray[100]} />
-    </CartButtonStyle>
+    </OpenCartButtonStyle>
   )
 }
