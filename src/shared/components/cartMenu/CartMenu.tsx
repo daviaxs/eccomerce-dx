@@ -45,6 +45,7 @@ const CartMenuStyle = styled.div`
   right: 0;
 
   background-color: ${theme.gray[500]};
+  box-shadow: -11px 0px 56px #000;
   height: 100%;
   width: 26rem;
 
