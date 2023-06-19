@@ -3,6 +3,7 @@ import { theme } from '@/shared/theme'
 import { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { ButtonClose } from './utils/ButtonClose'
+import { CartFooter } from './utils/CartFooter'
 import { CartHeader } from './utils/CartHeader'
 
 const CartMenuBG = styled.div`
@@ -103,6 +104,7 @@ export function CartMenu() {
       <CartMenuStyle className={expandedCartMenu ? 'open' : 'close'}>
         <ButtonClose onClick={toggleCartMenu} />
         <CartHeader />
+        <CartFooter />
       </CartMenuStyle>
     </CartMenuBG>
   )

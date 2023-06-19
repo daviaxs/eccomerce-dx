@@ -1,7 +1,39 @@
+import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
+import { theme } from '@/shared/theme'
 import styled from 'styled-components'
+import { ButtonPrimary } from '../../buttons/ButtonPrimary'
 
-const CartFooterStyle = styled.footer``
+const CartFooterStyle = styled.footer`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color: ${theme.gray[800]};
+  padding: 2rem;
+  width: 100%;
+
+  position: absolute;
+  bottom: 0;
+
+  .button {
+    position: absolute;
+    bottom: 0.5rem;
+  }
+`
 
 export function CartFooter() {
-  return <CartFooterStyle></CartFooterStyle>
+  return (
+    <CartFooterStyle>
+      <ButtonPrimary
+        variant="green"
+        width="90%"
+        onClick={() => alert('hello world')}
+        className="button"
+      >
+        <THeadingPrimary txtColor="white" fontSize={1.5}>
+          Concluir compra
+        </THeadingPrimary>
+      </ButtonPrimary>
+    </CartFooterStyle>
+  )
 }
