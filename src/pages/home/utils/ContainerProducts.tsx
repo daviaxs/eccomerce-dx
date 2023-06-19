@@ -28,7 +28,7 @@ const ContainerProductsStyle = styled.ul`
 export function ContainerProducts() {
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState([])
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState<IProductProps[]>([])
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -40,6 +40,16 @@ export function ContainerProducts() {
     }
     fetchApi()
   }, [])
+
+  const handleClick = (obj: IProductProps) => {
+    const element = cart.find((e) => e.id === obj.id)
+    if (element) {
+      const arrFilter = cart.filter((e) => e.id !== obj.id)
+      setCart(arrFilter)
+    } else {
+      setCart([...cart, obj])
+    }
+  }
 
   return (
     <ContainerProductsStyle>
@@ -72,11 +82,11 @@ export function ContainerProducts() {
             price={e.price}
             description={e.title}
             buttonText={
-              cart.some((itemCart: IProductProps) => itemCart.id === e.id)
+              cart.some((itemCart) => itemCart.id === e.id)
                 ? 'Item adicionado'
                 : 'Adicionar ao carrinho'
             }
-            onClick={() => alert('hello world')}
+            onClick={() => handleClick(e)}
             oldPrice={e.original_price ? e.original_price : undefined}
             discount={
               e.original_price
