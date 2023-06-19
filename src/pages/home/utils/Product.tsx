@@ -14,6 +14,8 @@ interface IProductProps {
 
   oldPrice?: number | undefined
   discount?: number | undefined
+
+  onClick: () => void
 }
 
 interface IProductStyleProps {
@@ -60,6 +62,7 @@ export function Product({
   description,
   oldPrice,
   discount,
+  onClick,
 }: IProductProps) {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
 
@@ -121,7 +124,7 @@ export function Product({
       <ButtonPrimary
         variant="purple"
         width="90%"
-        onClick={() => alert('Hello world')}
+        onClick={onClick}
         className="button"
       >
         <THeadingPrimary

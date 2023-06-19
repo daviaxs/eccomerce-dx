@@ -28,6 +28,7 @@ const ContainerProductsStyle = styled.ul`
 export function ContainerProducts() {
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState([])
+  const [cart, setCart] = useState([])
 
   useEffect(() => {
     const fetchApi = async () => {
@@ -70,6 +71,7 @@ export function ContainerProducts() {
             img={e.thumbnail}
             price={e.price}
             description={e.title}
+            onClick={() => alert('hello world')}
             oldPrice={e.original_price ? e.original_price : undefined}
             discount={
               e.original_price
