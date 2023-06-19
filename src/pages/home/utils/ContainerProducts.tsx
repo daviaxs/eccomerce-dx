@@ -71,6 +71,11 @@ export function ContainerProducts() {
             img={e.thumbnail}
             price={e.price}
             description={e.title}
+            buttonText={
+              cart.some((itemCart: IProductProps) => itemCart.id === e.id)
+                ? 'Item adicionado'
+                : 'Adicionar ao carrinho'
+            }
             onClick={() => alert('hello world')}
             oldPrice={e.original_price ? e.original_price : undefined}
             discount={

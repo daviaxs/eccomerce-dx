@@ -15,6 +15,7 @@ interface IProductProps {
   oldPrice?: number | undefined
   discount?: number | undefined
 
+  buttonText: string
   onClick: () => void
 }
 
@@ -62,6 +63,7 @@ export function Product({
   description,
   oldPrice,
   discount,
+  buttonText,
   onClick,
 }: IProductProps) {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
@@ -131,7 +133,7 @@ export function Product({
           fontSize={windowWidth <= 450 ? 1 : 1.5}
           txtColor="white"
         >
-          Adicionar ao carrinho
+          {buttonText}
         </THeadingPrimary>
       </ButtonPrimary>
     </ProductStyle>
