@@ -83,7 +83,7 @@ export function ContainerProducts() {
             description={e.title}
             buttonText={
               cart.some((itemCart) => itemCart.id === e.id)
-                ? 'Item adicionado'
+                ? 'Remover do carrinho'
                 : 'Adicionar ao carrinho'
             }
             onClick={() => handleClick(e)}
