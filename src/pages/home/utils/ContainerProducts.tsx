@@ -87,7 +87,13 @@ export function ContainerProducts() {
                 : 'Adicionar ao carrinho'
             }
             onClick={() => handleClick(e)}
-            oldPrice={e.original_price ? e.original_price : undefined}
+            oldPrice={
+              e.original_price
+                ? e.price === e.original_price
+                  ? undefined
+                  : e.original_price
+                : undefined
+            }
             discount={
               e.original_price
                 ? roundNumber(CalcDiscout(e.original_price, e.price))
