@@ -10,7 +10,7 @@ interface IButtonPrimaryProps {
   onClick: () => void
 }
 
-const getButtonColor = (variant: string) => {
+const getButtonColorDefault = (variant: string) => {
   switch (variant) {
     case 'purple':
       return theme.purple[400]
@@ -18,6 +18,39 @@ const getButtonColor = (variant: string) => {
       return theme.green[400]
     default:
       return theme.red[400]
+  }
+}
+
+const getButtonColorHover = (variant: string) => {
+  switch (variant) {
+    case 'purple':
+      return theme.purple[500]
+    case 'green':
+      return theme.green[500]
+    default:
+      return theme.red[500]
+  }
+}
+
+const getButtonColorOutline = (variant: string) => {
+  switch (variant) {
+    case 'purple':
+      return theme.purple[300]
+    case 'green':
+      return theme.green[300]
+    default:
+      return theme.red[300]
+  }
+}
+
+const getButtonColorFocus = (variant: string) => {
+  switch (variant) {
+    case 'purple':
+      return theme.purple[300]
+    case 'green':
+      return theme.green[800]
+    default:
+      return theme.red[800]
   }
 }
 
@@ -33,21 +66,16 @@ const ButtonPrimaryStyle = styled.button<IButtonPrimaryProps>`
 
   transition: all 0.2s ease-out;
 
-  background-color: ${(props) => getButtonColor(props.variant)};
+  background-color: ${(props) => getButtonColorDefault(props.variant)};
 
   &:hover {
-    background-color: ${(props) =>
-      props.variant === 'purple' ? theme.purple[500] : theme.green[500]};
-    outline: 0.063rem solid
-      ${(props) =>
-        props.variant === 'purple' ? theme.purple[300] : theme.green[300]};
+    background-color: ${(props) => getButtonColorHover(props.variant)};
+    outline: 0.063rem solid ${(props) => getButtonColorOutline(props.variant)};
     cursor: pointer;
   }
 
   &:focus-visible {
-    outline: 0.2rem solid
-      ${(props) =>
-        props.variant === 'purple' ? theme.purple[300] : theme.green[800]};
+    outline: 0.2rem solid ${(props) => getButtonColorFocus(props.variant)};
   }
 `
 
