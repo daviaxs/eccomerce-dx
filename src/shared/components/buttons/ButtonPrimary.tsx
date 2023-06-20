@@ -3,11 +3,22 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface IButtonPrimaryProps {
-  variant: 'purple' | 'green'
+  variant: 'purple' | 'green' | 'red'
   width: '100%' | '90%'
   children: React.ReactNode
   className: string
   onClick: () => void
+}
+
+const getButtonColor = (variant: string) => {
+  switch (variant) {
+    case 'purple':
+      return theme.purple[400]
+    case 'green':
+      return theme.green[400]
+    default:
+      return theme.red[400]
+  }
 }
 
 const ButtonPrimaryStyle = styled.button<IButtonPrimaryProps>`
@@ -22,8 +33,7 @@ const ButtonPrimaryStyle = styled.button<IButtonPrimaryProps>`
 
   transition: all 0.2s ease-out;
 
-  background-color: ${(props) =>
-    props.variant === 'purple' ? theme.purple[400] : theme.green[400]};
+  background-color: ${(props) => getButtonColor(props.variant)};
 
   &:hover {
     background-color: ${(props) =>
