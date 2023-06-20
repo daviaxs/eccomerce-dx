@@ -95,7 +95,10 @@ export function Product({
               txtColor={theme.gray[400]}
               txtDecoration="line-through"
             >
-              R$ {oldPrice}
+              {oldPrice.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
             </TTextPrimary>
           )}
 
@@ -104,7 +107,10 @@ export function Product({
               txtColor={theme.gray[50]}
               fontSize={windowWidth <= 450 ? 1.5 : 2}
             >
-              R$ {price}
+              {price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
             </THeadingPrimary>
             {oldPrice === undefined ? null : (
               <TTextPrimary
