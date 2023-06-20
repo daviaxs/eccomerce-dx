@@ -15,6 +15,7 @@ interface IProductProps {
   oldPrice?: number | undefined
   discount?: number | undefined
 
+  buttonColorVariant: 'green' | 'purple' | 'red'
   buttonText: string
   onClick: () => void
 }
@@ -63,6 +64,7 @@ export function Product({
   description,
   oldPrice,
   discount,
+  buttonColorVariant: buttonVariant = 'purple',
   buttonText,
   onClick,
 }: IProductProps) {
@@ -130,7 +132,7 @@ export function Product({
       </Container>
 
       <ButtonPrimary
-        variant="purple"
+        variant={buttonVariant}
         width="90%"
         onClick={onClick}
         className="button"

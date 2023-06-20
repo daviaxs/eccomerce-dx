@@ -81,6 +81,9 @@ export function ContainerProducts() {
             img={e.thumbnail}
             price={e.price}
             description={e.title}
+            buttonColorVariant={
+              cart.some((itemCart) => itemCart.id === e.id) ? 'red' : 'purple'
+            }
             buttonText={
               cart.some((itemCart) => itemCart.id === e.id)
                 ? 'Remover do carrinho'
