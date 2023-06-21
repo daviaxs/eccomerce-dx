@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { apiBaseUrl } from '@/shared/api/api'
+import { setItem } from '@/shared/services/LocalStorageFuncs'
 import { theme } from '@/shared/theme'
 import { Skeleton } from '@mui/material'
 import { Product } from './Product'
@@ -46,8 +47,10 @@ export function ContainerProducts() {
     if (element) {
       const arrFilter = cart.filter((e) => e.id !== obj.id)
       setCart(arrFilter)
+      setItem({ key: 'shopCart', value: arrFilter })
     } else {
       setCart([...cart, obj])
+      setItem({ key: 'shopCart', value: [...cart, obj] })
     }
   }
 

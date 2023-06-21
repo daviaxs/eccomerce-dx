@@ -1,6 +1,6 @@
 interface ISetItem {
   key: string
-  value: string
+  value: any
 }
 
 export const setItem = ({ key, value }: ISetItem) => {
