@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { apiBaseUrl } from '@/shared/api/api'
-import { setItem } from '@/shared/services/LocalStorageFuncs'
+import { getItem, setItem } from '@/shared/services/LocalStorageFuncs'
 import { theme } from '@/shared/theme'
 import { Skeleton } from '@mui/material'
 import { Product } from './Product'
@@ -29,7 +29,7 @@ const ContainerProductsStyle = styled.ul`
 export function ContainerProducts() {
   const [isLoading, setIsLoading] = useState(true)
   const [data, setData] = useState([])
-  const [cart, setCart] = useState<IProductProps[]>([])
+  const [cart, setCart] = useState<IProductProps[]>(getItem('shopCart') || [])
 
   useEffect(() => {
     const fetchApi = async () => {
