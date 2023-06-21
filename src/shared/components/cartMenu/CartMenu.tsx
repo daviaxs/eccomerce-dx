@@ -42,14 +42,14 @@ const CartMenuBG = styled.div`
   }
 `
 
-const CartMenuStyle = styled.div`
+const CartMenuStyle = styled.div<{ width: string }>`
   position: fixed;
   right: 0;
 
   background-color: ${theme.gray[500]};
   box-shadow: -11px 0px 56px #000;
   height: 100%;
-  width: 26rem;
+  width: ${(props) => props.width};
 
   &.open {
     animation: menuAnimationIn 0.3s forwards ease-out;
@@ -103,7 +103,10 @@ export function CartMenu() {
       className={expandedCartMenu ? 'open' : 'close'}
       onAnimationEnd={handleAnimationEnd}
     >
-      <CartMenuStyle className={expandedCartMenu ? 'open' : 'close'}>
+      <CartMenuStyle
+        width={windowWidth > 450 ? '26rem' : '100vw'}
+        className={expandedCartMenu ? 'open' : 'close'}
+      >
         {windowWidth > 450 && <ButtonClose onClick={toggleCartMenu} />}
         <CartHeader />
         <CartFooter />
