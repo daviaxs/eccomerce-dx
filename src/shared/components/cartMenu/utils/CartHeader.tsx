@@ -1,7 +1,9 @@
 import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 import { X } from 'lucide-react'
+import { useContext } from 'react'
 import styled from 'styled-components'
 
 const CartHeaderStyle = styled.header`
@@ -25,13 +27,16 @@ const CartHeaderStyle = styled.header`
 
 export function CartHeader() {
   const { toggleCartMenu } = useCartMenuContext()
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
 
   return (
     <CartHeaderStyle>
       <TTextPrimary fontSize={1}>
         Seu carrinho tem <strong>4 itens!</strong>
       </TTextPrimary>
-      <X size={30} className="closeButton" onClick={toggleCartMenu} />
+      {windowWidth <= 450 && (
+        <X size={30} className="closeButton" onClick={toggleCartMenu} />
+      )}
     </CartHeaderStyle>
   )
 }
