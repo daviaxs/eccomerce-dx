@@ -1,6 +1,7 @@
 import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { theme } from '@/shared/theme'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { ButtonClose } from './utils/ButtonClose'
 import { CartFooter } from './utils/CartFooter'
@@ -81,6 +82,7 @@ export function CartMenu() {
   const { expandedCartMenu, toggleCartMenu } = useCartMenuContext()
   // eslint-disable-next-line prettier/prettier
   const [shouldRenderCartMenu, setShouldRenderCartMenu] = useState(expandedCartMenu)
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
 
   useEffect(
     () => (expandedCartMenu ? setShouldRenderCartMenu(true) : undefined),
@@ -102,7 +104,7 @@ export function CartMenu() {
       onAnimationEnd={handleAnimationEnd}
     >
       <CartMenuStyle className={expandedCartMenu ? 'open' : 'close'}>
-        <ButtonClose onClick={toggleCartMenu} />
+        {windowWidth > 450 && <ButtonClose onClick={toggleCartMenu} />}
         <CartHeader />
         <CartFooter />
       </CartMenuStyle>
