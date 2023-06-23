@@ -19,6 +19,22 @@ const OpenCartButtonStyle = styled.button`
   background-color: ${theme.gray[500]};
   cursor: pointer;
 
+  .alert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 1rem;
+    height: 1rem;
+
+    background-color: ${theme.red[400]};
+    border-radius: 9999px;
+
+    position: absolute;
+    top: 0.5rem;
+    right: 0.6rem;
+  }
+
   .arrowIcon {
     position: absolute;
     left: 0.5rem;
@@ -47,6 +63,7 @@ export function OpenCartButton() {
   return (
     <OpenCartButtonStyle className="OpenCartButton" onClick={toggleCartMenu}>
       <ChevronLeft color={theme.gray[100]} className="arrowIcon" />
+      <span className="alert"></span>
       <ShoppingCart color={theme.gray[100]} />
     </OpenCartButtonStyle>
   )
