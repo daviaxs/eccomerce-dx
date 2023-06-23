@@ -1,4 +1,5 @@
 import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
+import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
 import styled from 'styled-components'
@@ -33,6 +34,11 @@ const OpenCartButtonStyle = styled.button`
     position: absolute;
     top: 0.5rem;
     right: 0.6rem;
+
+    .alertText {
+      position: relative;
+      left: -0.04rem;
+    }
   }
 
   .arrowIcon {
@@ -63,7 +69,15 @@ export function OpenCartButton() {
   return (
     <OpenCartButtonStyle className="OpenCartButton" onClick={toggleCartMenu}>
       <ChevronLeft color={theme.gray[100]} className="arrowIcon" />
-      <span className="alert"></span>
+      <span className="alert">
+        <THeadingSecondary
+          txtColor="white"
+          fontSize={0.7}
+          className="alertText"
+        >
+          9+
+        </THeadingSecondary>
+      </span>
       <ShoppingCart color={theme.gray[100]} />
     </OpenCartButtonStyle>
   )
