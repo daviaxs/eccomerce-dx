@@ -44,13 +44,20 @@ export function ContainerProducts() {
 
   const handleClick = (obj: IProductProps) => {
     const element = cart.find((e) => e.id === obj.id)
+
     if (element) {
       const arrFilter = cart.filter((e) => e.id !== obj.id)
       setCart(arrFilter)
       setItem({ key: 'shopCart', value: arrFilter })
+
+      const event = new CustomEvent('cartChange', { detail: arrFilter })
+      window.dispatchEvent(event)
     } else {
       setCart([...cart, obj])
       setItem({ key: 'shopCart', value: [...cart, obj] })
+
+      const event = new CustomEvent('cartChange', { detail: [...cart, obj] })
+      window.dispatchEvent(event)
     }
   }
 

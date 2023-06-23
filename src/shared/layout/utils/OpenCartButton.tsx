@@ -1,7 +1,9 @@
 import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
 import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
+import { getItem } from '@/shared/services/LocalStorageFuncs'
 import { theme } from '@/shared/theme'
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const OpenCartButtonStyle = styled.button`
@@ -65,6 +67,24 @@ const OpenCartButtonStyle = styled.button`
 
 export function OpenCartButton() {
   const { toggleCartMenu } = useCartMenuContext()
+  const [dataCart, setDataCart] = useState(getItem('shopCart'))
+  const [cartLength, setCartLength] = useState(0)
+
+  useEffect(() => {
+    const handleCartChange = (event: any) => {
+      setDataCart(event.detail)
+    }
+
+    window.addEventListener('cartChange', handleCartChange)
+
+    return () => {
+      window.removeEventListener('cartChange', handleCartChange)
+    }
+  }, [])
+
+  useEffect(() => {
+    setCartLength(dataCart.length)
+  }, [dataCart.length])
 
   return (
     <OpenCartButtonStyle className="OpenCartButton" onClick={toggleCartMenu}>
@@ -75,7 +95,7 @@ export function OpenCartButton() {
           fontSize={0.7}
           className="alertText"
         >
-          9+
+          {cartLength}
         </THeadingSecondary>
       </span>
       <ShoppingCart color={theme.gray[100]} />
