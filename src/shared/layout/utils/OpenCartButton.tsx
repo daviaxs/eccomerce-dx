@@ -1,10 +1,11 @@
+import { ChevronLeft, ShoppingCart } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import styled from 'styled-components'
+
 import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
 import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { getItem } from '@/shared/services/LocalStorageFuncs'
 import { theme } from '@/shared/theme'
-import { ChevronLeft, ShoppingCart } from 'lucide-react'
-import { useEffect, useState } from 'react'
-import styled from 'styled-components'
 
 const OpenCartButtonStyle = styled.button`
   display: flex;
@@ -84,7 +85,7 @@ export function OpenCartButton() {
 
   useEffect(() => {
     setCartLength(dataCart.length)
-  }, [dataCart.length])
+  }, [dataCart])
 
   return (
     <OpenCartButtonStyle className="OpenCartButton" onClick={toggleCartMenu}>
