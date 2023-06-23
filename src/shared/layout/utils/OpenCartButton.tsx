@@ -39,7 +39,7 @@ const OpenCartButtonStyle = styled.button`
 
     .alertText {
       position: relative;
-      left: -0.04rem;
+      left: -0.02rem;
     }
   }
 
