@@ -18,7 +18,7 @@ export function useCartLength() {
   }, [])
 
   useEffect(() => {
-    setCartLength(dataCart.length)
+    setCartLength(dataCart?.length || 0)
   }, [dataCart])
 
   return cartLength
