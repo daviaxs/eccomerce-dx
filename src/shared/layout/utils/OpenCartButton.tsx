@@ -89,15 +89,17 @@ export function OpenCartButton() {
   return (
     <OpenCartButtonStyle className="OpenCartButton" onClick={toggleCartMenu}>
       <ChevronLeft color={theme.gray[100]} className="arrowIcon" />
-      <span className="alert">
-        <THeadingSecondary
-          txtColor="white"
-          fontSize={0.7}
-          className="alertText"
-        >
-          {cartLength}
-        </THeadingSecondary>
-      </span>
+      {cartLength > 0 && (
+        <span className="alert">
+          <THeadingSecondary
+            txtColor="white"
+            fontSize={0.7}
+            className="alertText"
+          >
+            {cartLength}
+          </THeadingSecondary>
+        </span>
+      )}
       <ShoppingCart color={theme.gray[100]} />
     </OpenCartButtonStyle>
   )
