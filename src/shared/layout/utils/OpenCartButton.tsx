@@ -31,6 +31,7 @@ const OpenCartButtonStyle = styled.button`
     height: 1rem;
 
     background-color: ${theme.red[400]};
+    outline: 2px solid ${theme.gray[500]};
     border-radius: 9999px;
 
     position: absolute;
