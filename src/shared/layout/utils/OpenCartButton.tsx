@@ -96,7 +96,7 @@ export function OpenCartButton() {
             fontSize={0.7}
             className="alertText"
           >
-            {cartLength}
+            {cartLength > 9 ? '9+' : cartLength}
           </THeadingSecondary>
         </span>
       )}
