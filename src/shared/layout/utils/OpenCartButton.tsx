@@ -1,10 +1,9 @@
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
-import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
 import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
-import { getItem } from '@/shared/services/LocalStorageFuncs'
+import { useCartLength } from '@/shared/services/CartLength'
 import { theme } from '@/shared/theme'
 
 const OpenCartButtonStyle = styled.button`
@@ -68,24 +67,7 @@ const OpenCartButtonStyle = styled.button`
 
 export function OpenCartButton() {
   const { toggleCartMenu } = useCartMenuContext()
-  const [dataCart, setDataCart] = useState(getItem('shopCart'))
-  const [cartLength, setCartLength] = useState(0)
-
-  useEffect(() => {
-    const handleCartChange = (event: any) => {
-      setDataCart(event.detail)
-    }
-
-    window.addEventListener('cartChange', handleCartChange)
-
-    return () => {
-      window.removeEventListener('cartChange', handleCartChange)
-    }
-  }, [])
-
-  useEffect(() => {
-    setCartLength(dataCart.length)
-  }, [dataCart])
+  const cartLength = useCartLength()
 
   return (
     <OpenCartButtonStyle className="OpenCartButton" onClick={toggleCartMenu}>
