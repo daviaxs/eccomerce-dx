@@ -1,5 +1,5 @@
-import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import styled from 'styled-components'
+import { CartProduct } from './CartProduct'
 
 const CartContentStyle = styled.ul`
   display: flex;
@@ -17,7 +17,7 @@ const CartContentStyle = styled.ul`
 export function CartContent() {
   return (
     <CartContentStyle>
-      <THeadingPrimary txtColor="white">hello world</THeadingPrimary>
+      <CartProduct />
     </CartContentStyle>
   )
 }
