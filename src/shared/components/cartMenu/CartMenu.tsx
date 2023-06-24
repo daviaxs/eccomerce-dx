@@ -6,6 +6,7 @@ import styled from 'styled-components'
 import { ButtonClose } from './utils/ButtonClose'
 import { CartFooter } from './utils/CartFooter'
 import { CartHeader } from './utils/CartHeader'
+import { CartContent } from './utils/CartContent'
 
 const CartMenuBG = styled.div`
   position: fixed;
@@ -109,6 +110,7 @@ export function CartMenu() {
       >
         {windowWidth > 450 && <ButtonClose onClick={toggleCartMenu} />}
         <CartHeader />
+        <CartContent />
         <CartFooter />
       </CartMenuStyle>
     </CartMenuBG>
