@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { Container } from '@/shared/components/container/Container'
-import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
+import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 
 const ProductStyle = styled.li`
@@ -39,6 +39,7 @@ export function CartProduct() {
       />
       <Container
         display="flex"
+        flexDir="column"
         align="start"
         justifyContent="start"
         width="100%"
@@ -47,6 +48,19 @@ export function CartProduct() {
         <THeadingPrimary fontSize={0.8} className="text">
           Samsung Galaxy A14 Dual 128gb 4gb Ram Tela 6.6 4g Câm 50mp
         </THeadingPrimary>
+
+        <Container display="flex" align="end" width="100%" height="60%">
+          <Container display="flex" flexDir="column" width="" height="">
+            <TTextPrimary
+              fontSize={0.8}
+              txtColor={theme.gray[400]}
+              txtDecoration="line-through"
+            >
+              R$ 1000,00
+            </TTextPrimary>
+            <THeadingPrimary fontSize={1.5}>R$ 963,00</THeadingPrimary>
+          </Container>
+        </Container>
       </Container>
     </ProductStyle>
   )
