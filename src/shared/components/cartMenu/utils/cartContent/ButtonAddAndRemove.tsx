@@ -9,7 +9,7 @@ interface IButtonAddAndRemoveProps {
   onClick: () => void
 }
 
-const getButtonBorderColor = (variant: string) => {
+const getButtonColor = (variant: string) => {
   switch (variant) {
     case 'green':
       return theme.green[500]
@@ -24,11 +24,29 @@ const ButtonAddAndRemoveStyle = styled.button<IButtonAddAndRemoveProps>`
   justify-content: center;
 
   background-color: transparent;
-  border: 1px solid ${(props) => getButtonBorderColor(props.variant)};
+  border: 2px solid ${(props) => getButtonColor(props.variant)};
   border-radius: 0.5rem;
 
   padding: 0.2rem;
   transform: scale(0.8);
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+
+  .iconRemove {
+    color: ${theme.gray[300]};
+  }
+
+  .iconAdd {
+    color: ${theme.green[500]};
+  }
+
+  &:hover {
+    background-color: ${(props) => getButtonColor(props.variant)};
+
+    .icon {
+      color: white;
+    }
+  }
 `
 
 export function ButtonAddAndRemove({

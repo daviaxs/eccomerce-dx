@@ -47,7 +47,7 @@ export function CartProduct() {
         display="flex"
         flexDir="column"
         align="start"
-        justifyContent="start"
+        justifyContent="space-between"
         width="100%"
         height="100%"
       >
@@ -57,10 +57,10 @@ export function CartProduct() {
 
         <Container
           display="flex"
-          align="end"
+          align="center"
           justifyContent="space-between"
           width="100%"
-          height="60%"
+          height=""
         >
           <Container display="flex" flexDir="column" width="" height="">
             <TTextPrimary
@@ -85,7 +85,7 @@ export function CartProduct() {
               variant="default"
               onClick={() => alert('hello world')}
             >
-              <Minus color={theme.gray[300]} />
+              <Minus className="icon iconRemove" />
             </ButtonAddAndRemove>
 
             <THeadingPrimary fontSize={1} className="numberCounter">
@@ -96,7 +96,7 @@ export function CartProduct() {
               variant="green"
               onClick={() => alert('hello world')}
             >
-              <Plus color={theme.green[500]} />
+              <Plus className="icon iconAdd" />
             </ButtonAddAndRemove>
           </Container>
         </Container>

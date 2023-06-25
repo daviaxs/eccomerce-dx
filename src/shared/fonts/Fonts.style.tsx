@@ -19,7 +19,7 @@ const THeadingPrimaryStyle = styled.h1<ITextProps>`
   font-size: ${(props) => props.fontSize}rem;
   white-space: ${(props) => props.whiteSpace};
   text-align: ${(props) => props.textAlign};
-  line-height: 100%;
+  line-height: 120%;
 
   color: ${(props) => props.txtColor};
   text-shadow: ${(props) => props.txtShadow};
