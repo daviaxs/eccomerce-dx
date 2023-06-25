@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
+import { Minus, Plus } from 'lucide-react'
 import { ButtonAddAndRemove } from './ButtonAddAndRemove'
 
 const ProductStyle = styled.li`
@@ -73,14 +74,14 @@ export function CartProduct() {
               variant="default"
               onClick={() => alert('hello world')}
             >
-              -
+              <Minus color={theme.gray[300]} />
             </ButtonAddAndRemove>
 
             <ButtonAddAndRemove
               variant="green"
               onClick={() => alert('hello world')}
             >
-              +
+              <Plus color={theme.green[500]} />
             </ButtonAddAndRemove>
           </Container>
         </Container>
