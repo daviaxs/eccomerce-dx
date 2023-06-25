@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
+import { ButtonAddAndRemove } from './ButtonAddAndRemove'
 
 const ProductStyle = styled.li`
   display: flex;
@@ -65,6 +66,22 @@ export function CartProduct() {
               R$ 1000,00
             </TTextPrimary>
             <THeadingPrimary fontSize={1.5}>R$ 963,00</THeadingPrimary>
+          </Container>
+
+          <Container display="flex" gap={0.5} width="" height="">
+            <ButtonAddAndRemove
+              variant="default"
+              onClick={() => alert('hello world')}
+            >
+              -
+            </ButtonAddAndRemove>
+
+            <ButtonAddAndRemove
+              variant="green"
+              onClick={() => alert('hello world')}
+            >
+              +
+            </ButtonAddAndRemove>
           </Container>
         </Container>
       </Container>
