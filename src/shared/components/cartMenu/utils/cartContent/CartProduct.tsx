@@ -29,6 +29,10 @@ const ProductStyle = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  .numberCounter {
+    margin-bottom: 0.2rem;
+  }
 `
 
 export function CartProduct() {
@@ -69,13 +73,24 @@ export function CartProduct() {
             <THeadingPrimary fontSize={1.5}>R$ 963,00</THeadingPrimary>
           </Container>
 
-          <Container display="flex" gap={0.5} width="" height="">
+          <Container
+            display="flex"
+            align="center"
+            gap={0.5}
+            width=""
+            height=""
+            className="buttonsCounter"
+          >
             <ButtonAddAndRemove
               variant="default"
               onClick={() => alert('hello world')}
             >
               <Minus color={theme.gray[300]} />
             </ButtonAddAndRemove>
+
+            <THeadingPrimary fontSize={1} className="numberCounter">
+              1
+            </THeadingPrimary>
 
             <ButtonAddAndRemove
               variant="green"
