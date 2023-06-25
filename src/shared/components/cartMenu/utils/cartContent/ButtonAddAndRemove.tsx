@@ -1,4 +1,12 @@
+import React from 'react'
 import styled from 'styled-components'
+
+interface IButtonAddAndRemoveProps {
+  variant: 'default' | 'green'
+  children: React.ReactNode
+
+  onClick: () => void
+}
 
 const ButtonAddAndRemoveStyle = styled.button`
   display: flex;
@@ -12,6 +20,13 @@ const ButtonAddAndRemoveStyle = styled.button`
   height: 1.3rem;
 `
 
-export function ButtonAddAndRemove() {
-  return <ButtonAddAndRemoveStyle></ButtonAddAndRemoveStyle>
+export function ButtonAddAndRemove({
+  children,
+  onClick,
+}: IButtonAddAndRemoveProps) {
+  return (
+    <ButtonAddAndRemoveStyle onClick={onClick}>
+      {children}
+    </ButtonAddAndRemoveStyle>
+  )
 }
