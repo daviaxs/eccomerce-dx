@@ -1,3 +1,4 @@
+import { theme } from '@/shared/theme'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -8,12 +9,22 @@ interface IButtonAddAndRemoveProps {
   onClick: () => void
 }
 
-const ButtonAddAndRemoveStyle = styled.button`
+const getButtonBorderColor = (variant: string) => {
+  switch (variant) {
+    case 'green':
+      return theme.green[500]
+    default:
+      return theme.gray[300]
+  }
+}
+
+const ButtonAddAndRemoveStyle = styled.button<IButtonAddAndRemoveProps>`
   display: flex;
   align-items: center;
   justify-content: center;
 
   background-color: transparent;
+  border: 1px solid ${(props) => getButtonBorderColor(props.variant)};
   border-radius: 0.5rem;
 
   width: 1.3rem;
@@ -21,11 +32,12 @@ const ButtonAddAndRemoveStyle = styled.button`
 `
 
 export function ButtonAddAndRemove({
+  variant,
   children,
   onClick,
 }: IButtonAddAndRemoveProps) {
   return (
-    <ButtonAddAndRemoveStyle onClick={onClick}>
+    <ButtonAddAndRemoveStyle variant={variant} onClick={onClick}>
       {children}
     </ButtonAddAndRemoveStyle>
   )
