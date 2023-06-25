@@ -19,6 +19,14 @@ const ProductStyle = styled.li`
   .productImage {
     border-radius: 0.5rem;
   }
+
+  .text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `
 
 export function CartProduct() {
@@ -36,7 +44,7 @@ export function CartProduct() {
         width="100%"
         height="100%"
       >
-        <THeadingPrimary fontSize={0.8}>
+        <THeadingPrimary fontSize={0.8} className="text">
           Samsung Galaxy A14 Dual 128gb 4gb Ram Tela 6.6 4g Câm 50mp
         </THeadingPrimary>
       </Container>
