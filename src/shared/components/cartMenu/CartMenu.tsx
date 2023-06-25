@@ -1,8 +1,9 @@
+import { useCallback, useContext, useEffect, useState } from 'react'
+import styled from 'styled-components'
+
 import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { theme } from '@/shared/theme'
-import { useCallback, useContext, useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { ButtonClose } from './utils/ButtonClose'
 import { CartFooter } from './utils/CartFooter'
 import { CartHeader } from './utils/CartHeader'
