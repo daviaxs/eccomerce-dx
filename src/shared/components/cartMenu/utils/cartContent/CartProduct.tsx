@@ -49,7 +49,13 @@ export function CartProduct() {
           Samsung Galaxy A14 Dual 128gb 4gb Ram Tela 6.6 4g Câm 50mp
         </THeadingPrimary>
 
-        <Container display="flex" align="end" width="100%" height="60%">
+        <Container
+          display="flex"
+          align="end"
+          justifyContent="space-between"
+          width="100%"
+          height="60%"
+        >
           <Container display="flex" flexDir="column" width="" height="">
             <TTextPrimary
               fontSize={0.8}
