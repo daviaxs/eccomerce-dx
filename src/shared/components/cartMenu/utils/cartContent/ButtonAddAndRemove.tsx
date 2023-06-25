@@ -27,8 +27,8 @@ const ButtonAddAndRemoveStyle = styled.button<IButtonAddAndRemoveProps>`
   border: 1px solid ${(props) => getButtonBorderColor(props.variant)};
   border-radius: 0.5rem;
 
-  width: 1.3rem;
-  height: 1.3rem;
+  padding: 0.2rem;
+  transform: scale(0.8);
 `
 
 export function ButtonAddAndRemove({
