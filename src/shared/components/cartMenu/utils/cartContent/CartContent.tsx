@@ -30,6 +30,10 @@ const CartContentStyle = styled.ul`
   height: 75%;
   margin-top: 3.5rem;
   padding: 1rem 0 2rem 0;
+
+  .shoppingCartEmpty {
+    transform: scale(0.7);
+  }
 `
 
 export function CartContent() {

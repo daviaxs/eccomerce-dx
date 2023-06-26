@@ -6,14 +6,15 @@ export function ShoppingCartEmpty() {
       viewBox="0 0 292 191"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="shoppingCartEmpty"
     >
-      <rect x="38" width="215" height="33" rx="16.5" fill="#1F1F1F" />
-      <rect x="77" y="15" width="215" height="47" rx="23.5" fill="#1F1F1F" />
-      <rect x="7" y="44" width="246" height="43" rx="21.5" fill="#1F1F1F" />
-      <rect x="55" y="83" width="215" height="36" rx="18" fill="#1F1F1F" />
-      <rect y="95" width="215" height="36" rx="18" fill="#1F1F1F" />
-      <rect x="47" y="128" width="215" height="36" rx="18" fill="#1F1F1F" />
-      <rect x="16" y="155" width="215" height="36" rx="18" fill="#1F1F1F" />
+      <rect x="38" width="215" height="33" rx="16.5" fill="#272727" />
+      <rect x="77" y="15" width="215" height="47" rx="23.5" fill="#272727" />
+      <rect x="7" y="44" width="246" height="43" rx="21.5" fill="#272727" />
+      <rect x="55" y="83" width="215" height="36" rx="18" fill="#272727" />
+      <rect y="95" width="215" height="36" rx="18" fill="#272727" />
+      <rect x="47" y="128" width="215" height="36" rx="18" fill="#272727" />
+      <rect x="16" y="155" width="215" height="36" rx="18" fill="#272727" />
       <circle cx="105" cy="159" r="15" stroke="#BDBDBD" strokeWidth="10" />
       <circle cx="192" cy="159" r="15" stroke="#BDBDBD" strokeWidth="10" />
       <path
