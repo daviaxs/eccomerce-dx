@@ -1,10 +1,21 @@
+import { Minus, Plus } from 'lucide-react'
 import styled from 'styled-components'
 
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
-import { Minus, Plus } from 'lucide-react'
 import { ButtonAddAndRemove } from './ButtonAddAndRemove'
+
+interface IProductProps {
+  title: string
+  thumbnail: string
+  price: number
+  originalPrice: number
+
+  counterProduct: string
+  onClickAdd: () => void
+  onClickRemove: () => void
+}
 
 const ProductStyle = styled.li`
   display: flex;
@@ -35,14 +46,18 @@ const ProductStyle = styled.li`
   }
 `
 
-export function CartProduct() {
+export function CartProduct({
+  originalPrice,
+  price,
+  thumbnail,
+  title,
+  counterProduct,
+  onClickAdd,
+  onClickRemove,
+}: IProductProps) {
   return (
     <ProductStyle>
-      <img
-        src="http://http2.mlstatic.com/D_865221-MLU69233686783_052023-I.jpg"
-        className="productImage"
-        alt=""
-      />
+      <img src={thumbnail} className="productImage" alt="" />
       <Container
         display="flex"
         flexDir="column"
@@ -52,7 +67,7 @@ export function CartProduct() {
         height="100%"
       >
         <THeadingPrimary fontSize={0.8} className="text">
-          Samsung Galaxy A14 Dual 128gb 4gb Ram Tela 6.6 4g Câm 50mp
+          {title}
         </THeadingPrimary>
 
         <Container
@@ -68,9 +83,17 @@ export function CartProduct() {
               txtColor={theme.gray[400]}
               txtDecoration="line-through"
             >
-              R$ 1000,00
+              {originalPrice.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
             </TTextPrimary>
-            <THeadingPrimary fontSize={1.5}>R$ 963,00</THeadingPrimary>
+            <THeadingPrimary fontSize={1.5}>
+              {price.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}
+            </THeadingPrimary>
           </Container>
 
           <Container
@@ -81,21 +104,15 @@ export function CartProduct() {
             height=""
             className="buttonsCounter"
           >
-            <ButtonAddAndRemove
-              variant="default"
-              onClick={() => alert('hello world')}
-            >
+            <ButtonAddAndRemove variant="default" onClick={onClickRemove}>
               <Minus className="icon iconRemove" />
             </ButtonAddAndRemove>
 
             <THeadingPrimary fontSize={1} className="numberCounter">
-              1
+              {counterProduct}
             </THeadingPrimary>
 
-            <ButtonAddAndRemove
-              variant="green"
-              onClick={() => alert('hello world')}
-            >
+            <ButtonAddAndRemove variant="green" onClick={onClickAdd}>
               <Plus className="icon iconAdd" />
             </ButtonAddAndRemove>
           </Container>

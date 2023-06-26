@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
 
 import { ButtonPrimary } from '@/shared/components/buttons/ButtonPrimary'
@@ -5,7 +6,6 @@ import { Container } from '@/shared/components/container/Container'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
-import { useContext } from 'react'
 
 interface IProductProps {
   img: string

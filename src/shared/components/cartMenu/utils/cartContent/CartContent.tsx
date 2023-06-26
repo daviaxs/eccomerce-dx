@@ -15,6 +15,7 @@ const CartContentStyle = styled.ul`
 `
 
 export function CartContent() {
+
   return (
     <CartContentStyle>
       <CartProduct />
