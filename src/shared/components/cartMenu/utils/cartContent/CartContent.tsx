@@ -1,5 +1,17 @@
+import { getItem } from '@/shared/services/LocalStorageFuncs'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { CartProduct } from './CartProduct'
+
+interface IProductProps {
+  id: string
+  title: string
+  thumbnail: string
+  price: number
+  original_price: number
+
+  counterProduct: string
+}
 
 const CartContentStyle = styled.ul`
   display: flex;
@@ -15,10 +27,22 @@ const CartContentStyle = styled.ul`
 `
 
 export function CartContent() {
+  const [data, setData] = useState(getItem('shopCart') || [])
 
   return (
     <CartContentStyle>
-      <CartProduct />
+      {data.map((e: IProductProps) => (
+        <CartProduct
+          key={e.id}
+          title={e.title}
+          thumbnail={e.thumbnail}
+          price={e.price}
+          originalPrice={e.original_price}
+          onClickAdd={() => alert('hello world')}
+          onClickRemove={() => alert('hello world')}
+          counterProduct=""
+        />
+      ))}
     </CartContentStyle>
   )
 }
