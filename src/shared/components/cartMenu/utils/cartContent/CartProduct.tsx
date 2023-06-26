@@ -10,7 +10,7 @@ interface IProductProps {
   title: string
   thumbnail: string
   price: number
-  originalPrice: number
+  originalPrice: number | undefined
 
   counterProduct: string
   onClickAdd: () => void
@@ -78,16 +78,18 @@ export function CartProduct({
           height=""
         >
           <Container display="flex" flexDir="column" width="" height="">
-            <TTextPrimary
-              fontSize={0.8}
-              txtColor={theme.gray[400]}
-              txtDecoration="line-through"
-            >
-              {originalPrice.toLocaleString('pt-BR', {
-                style: 'currency',
-                currency: 'BRL',
-              })}
-            </TTextPrimary>
+            {originalPrice === undefined ? null : (
+              <TTextPrimary
+                fontSize={0.8}
+                txtColor={theme.gray[400]}
+                txtDecoration="line-through"
+              >
+                {originalPrice.toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}
+              </TTextPrimary>
+            )}
             <THeadingPrimary fontSize={1.5}>
               {price.toLocaleString('pt-BR', {
                 style: 'currency',
