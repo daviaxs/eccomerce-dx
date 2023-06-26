@@ -1,6 +1,8 @@
-import { getItem } from '@/shared/services/LocalStorageFuncs'
 import { useState } from 'react'
 import styled from 'styled-components'
+
+import { Container } from '@/shared/components/container/Container'
+import { getItem } from '@/shared/services/LocalStorageFuncs'
 import { CartProduct } from './CartProduct'
 
 interface IProductProps {
@@ -47,7 +49,15 @@ export function CartContent() {
           />
         ))
       ) : (
-        <div>hello world</div>
+        <Container
+          display="flex"
+          align="center"
+          justifyContent="center"
+          width="100%"
+          height="100%"
+        >
+          ...
+        </Container>
       )}
     </CartContentStyle>
   )
