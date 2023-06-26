@@ -33,18 +33,22 @@ export function CartContent() {
 
   return (
     <CartContentStyle>
-      {data.map((e: IProductProps) => (
-        <CartProduct
-          key={e.id}
-          title={e.title}
-          thumbnail={e.thumbnail}
-          price={e.price}
-          originalPrice={e.original_price ? e.original_price : undefined}
-          onClickAdd={() => alert('hello world')}
-          onClickRemove={() => alert('hello world')}
-          counterProduct=""
-        />
-      ))}
+      {data.length > 0 ? (
+        data.map((e: IProductProps) => (
+          <CartProduct
+            key={e.id}
+            title={e.title}
+            thumbnail={e.thumbnail}
+            price={e.price}
+            originalPrice={e.original_price ? e.original_price : undefined}
+            onClickAdd={() => alert('hello world')}
+            onClickRemove={() => alert('hello world')}
+            counterProduct=""
+          />
+        ))
+      ) : (
+        <div>hello world</div>
+      )}
     </CartContentStyle>
   )
 }
