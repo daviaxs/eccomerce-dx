@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
+import { ShoppingCartEmpty } from '@/shared/assets/ShoppingCartEmpty'
 import { Container } from '@/shared/components/container/Container'
 import { getItem } from '@/shared/services/LocalStorageFuncs'
 import { CartProduct } from './CartProduct'
@@ -56,7 +57,7 @@ export function CartContent() {
           width="100%"
           height="100%"
         >
-          ...
+          <ShoppingCartEmpty />
         </Container>
       )}
     </CartContentStyle>
