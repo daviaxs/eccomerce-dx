@@ -22,6 +22,7 @@ const CartContentStyle = styled.ul`
   align-items: start;
   justify-content: start;
   overflow-y: scroll;
+  overflow-x: hidden;
 
   background-color: transparent;
 

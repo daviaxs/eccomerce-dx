@@ -1,7 +1,9 @@
 import { Minus, Plus } from 'lucide-react'
+import { useContext } from 'react'
 import styled from 'styled-components'
 
 import { Container } from '@/shared/components/container/Container'
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 import { ButtonAddAndRemove } from './ButtonAddAndRemove'
@@ -17,14 +19,18 @@ interface IProductProps {
   onClickRemove: () => void
 }
 
-const ProductStyle = styled.li`
+interface IProductStyleProps {
+  height: number
+}
+
+const ProductStyle = styled.li<IProductStyleProps>`
   display: flex;
   align-items: center;
   justify-content: start;
 
   gap: 1rem;
   padding: 1rem;
-  height: 7.5rem;
+  height: ${(props) => props.height}rem;
   width: 100%;
 
   border-bottom: 1px solid ${theme.gray[400]};
@@ -55,8 +61,10 @@ export function CartProduct({
   onClickAdd,
   onClickRemove,
 }: IProductProps) {
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
+
   return (
-    <ProductStyle>
+    <ProductStyle height={windowWidth <= 400 ? 10 : 7.5}>
       <img src={thumbnail} className="productImage" alt="" />
       <Container
         display="flex"
@@ -65,6 +73,7 @@ export function CartProduct({
         justifyContent="space-between"
         width="100%"
         height="100%"
+        gap={windowWidth <= 400 ? 1 : 0}
       >
         <THeadingPrimary fontSize={0.8} className="text">
           {title}
@@ -72,7 +81,8 @@ export function CartProduct({
 
         <Container
           display="flex"
-          align="center"
+          flexDir={windowWidth <= 400 ? 'column' : 'row'}
+          align={windowWidth <= 400 ? 'start' : 'center'}
           justifyContent="space-between"
           width="100%"
           height=""
@@ -90,7 +100,7 @@ export function CartProduct({
                 })}
               </TTextPrimary>
             )}
-            <THeadingPrimary fontSize={1.5}>
+            <THeadingPrimary fontSize={windowWidth <= 400 ? 1.2 : 1.5}>
               {price.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
