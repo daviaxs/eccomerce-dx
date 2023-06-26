@@ -15,15 +15,17 @@ interface IProductProps {
 
 const CartContentStyle = styled.ul`
   display: flex;
+  flex-direction: column;
   align-items: start;
   justify-content: start;
+  overflow-y: scroll;
 
   background-color: transparent;
 
   width: 100%;
   height: 75%;
   margin-top: 3.5rem;
-  padding: 2rem 0;
+  padding: 1rem 0 2rem 0;
 `
 
 export function CartContent() {
