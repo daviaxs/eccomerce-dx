@@ -16,6 +16,10 @@ interface IProductProps {
   counterProduct: string
 }
 
+type Quantity = {
+  [key: string]: number
+}
+
 const CartContentStyle = styled.ul`
   display: flex;
   flex-direction: column;
@@ -38,6 +42,25 @@ const CartContentStyle = styled.ul`
 
 export function CartContent() {
   const [data, setData] = useState(getItem('shopCart') || [])
+  const [quantity, setQuantity] = useState<Quantity>({})
+
+  const handleAdd = (id: string) => {
+    setQuantity({
+      ...quantity,
+      [id]: quantity[id] ? quantity[id] + 1 : 2,
+    })
+  }
+
+  const handleRemove = (id: string) => {
+    if (quantity[id] === 1) {
+      setData(data.filter((e: IProductProps) => e.id !== id))
+    } else {
+      setQuantity({
+        ...quantity,
+        [id]: quantity[id] - 1,
+      })
+    }
+  }
 
   return (
     <CartContentStyle>
@@ -49,9 +72,9 @@ export function CartContent() {
             thumbnail={e.thumbnail}
             price={e.price}
             originalPrice={e.original_price ? e.original_price : undefined}
-            onClickAdd={() => alert('hello world')}
-            onClickRemove={() => alert('hello world')}
-            counterProduct={1}
+            onClickAdd={() => handleAdd(e.id)}
+            onClickRemove={() => handleRemove(e.id)}
+            counterProduct={quantity[e.id] || 1}
           />
         ))
       ) : (
