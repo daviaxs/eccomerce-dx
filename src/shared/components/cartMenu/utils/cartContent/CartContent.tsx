@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { ShoppingCartEmpty } from '@/shared/assets/ShoppingCartEmpty'
 import { Container } from '@/shared/components/container/Container'
-import { getItem } from '@/shared/services/LocalStorageFuncs'
+import { setItem } from '@/shared/services/LocalStorageFuncs'
 import { CartProduct } from './CartProduct'
 
 interface IProductProps {
@@ -41,7 +41,9 @@ const CartContentStyle = styled.ul`
 `
 
 export function CartContent() {
-  const [data, setData] = useState(getItem('shopCart') || [])
+  const shopCart = localStorage.getItem('shopCart')
+  const [data, setData] = useState(shopCart ? JSON.parse(shopCart) : [])
+
   const [quantity, setQuantity] = useState<Quantity>(
     data.reduce((obj: any, product: any) => {
       obj[product.id] = 1
@@ -58,7 +60,11 @@ export function CartContent() {
 
   const handleRemove = (id: string) => {
     if (quantity[id] === 1) {
-      setData(data.filter((e: IProductProps) => e.id !== id))
+      const newData = data.filter((e: IProductProps) => e.id !== id)
+      setData(newData)
+      if (newData) {
+        setItem({ key: 'shopCart', value: newData })
+      }
     } else {
       setQuantity({
         ...quantity,
