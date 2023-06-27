@@ -14,7 +14,7 @@ interface IProductProps {
   price: number
   originalPrice: number | undefined
 
-  counterProduct: string
+  counterProduct: number
   onClickAdd: () => void
   onClickRemove: () => void
 }

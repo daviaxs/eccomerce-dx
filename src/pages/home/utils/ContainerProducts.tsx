@@ -1,10 +1,10 @@
+import { Skeleton } from '@mui/material'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { apiBaseUrl } from '@/shared/api/api'
 import { getItem, setItem } from '@/shared/services/LocalStorageFuncs'
 import { theme } from '@/shared/theme'
-import { Skeleton } from '@mui/material'
 import { Product } from './Product'
 import { CalcDiscout, roundNumber } from './calcDiscount'
 

@@ -51,7 +51,7 @@ export function CartContent() {
             originalPrice={e.original_price ? e.original_price : undefined}
             onClickAdd={() => alert('hello world')}
             onClickRemove={() => alert('hello world')}
-            counterProduct=""
+            counterProduct={1}
           />
         ))
       ) : (
