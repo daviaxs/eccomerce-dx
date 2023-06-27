@@ -60,11 +60,15 @@ export function CartContent() {
 
   const handleRemove = (id: string) => {
     if (quantity[id] === 1) {
-      const newData = data.filter((e: IProductProps) => e.id !== id)
-      setData(newData)
-      if (newData) {
-        setItem({ key: 'shopCart', value: newData })
-      }
+      setData((prevData: []) => {
+        const newData = prevData.filter((e: IProductProps) => e.id !== id)
+
+        if (newData) {
+          setItem({ key: 'shopCart', value: newData })
+        }
+
+        return newData
+      })
     } else {
       setQuantity({
         ...quantity,
