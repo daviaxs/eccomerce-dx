@@ -63,6 +63,12 @@ export function CartContent() {
 
         return newData
       })
+
+      setQuantity((prevQuantity: any) => {
+        const newQuantity = { ...prevQuantity }
+        delete newQuantity[id]
+        return newQuantity
+      })
     } else {
       setQuantity({
         ...quantity,
