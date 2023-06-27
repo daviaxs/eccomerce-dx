@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { ShoppingCartEmpty } from '@/shared/assets/ShoppingCartEmpty'
@@ -14,10 +14,6 @@ interface IProductProps {
   original_price: number
 
   counterProduct: string
-}
-
-type Quantity = {
-  [key: string]: number
 }
 
 const CartContentStyle = styled.ul`
@@ -44,11 +40,9 @@ export function CartContent() {
   const shopCart = localStorage.getItem('shopCart')
   const [data, setData] = useState(shopCart ? JSON.parse(shopCart) : [])
 
-  const [quantity, setQuantity] = useState<Quantity>(
-    data.reduce((obj: any, product: any) => {
-      obj[product.id] = 1
-      return obj
-    }, {}),
+  const quantityCart = localStorage.getItem('quantity')
+  const [quantity, setQuantity] = useState(
+    quantityCart ? JSON.parse(quantityCart) : {},
   )
 
   const handleAdd = (id: string) => {
@@ -76,6 +70,12 @@ export function CartContent() {
       })
     }
   }
+
+  useEffect(() => {
+    if (Object.keys(quantity.length > 0)) {
+      setItem({ key: 'quantity', value: quantity })
+    }
+  }, [quantity])
 
   return (
     <CartContentStyle>
