@@ -42,7 +42,12 @@ const CartContentStyle = styled.ul`
 
 export function CartContent() {
   const [data, setData] = useState(getItem('shopCart') || [])
-  const [quantity, setQuantity] = useState<Quantity>({})
+  const [quantity, setQuantity] = useState<Quantity>(
+    data.reduce((obj: any, product: any) => {
+      obj[product.id] = 1
+      return obj
+    }, {}),
+  )
 
   const handleAdd = (id: string) => {
     setQuantity({
