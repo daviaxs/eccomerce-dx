@@ -60,7 +60,7 @@ export function CartContent() {
 
   const handleRemove = (id: string) => {
     if (quantity[id] === 1) {
-      setData((prevData: []) => {
+      setData((prevData: IProductProps[]) => {
         const newData = prevData.filter((e: IProductProps) => e.id !== id)
 
         if (newData) {
