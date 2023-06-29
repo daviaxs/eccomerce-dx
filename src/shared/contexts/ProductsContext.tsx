@@ -35,5 +35,9 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({
     fetchApi()
   }, [])
 
-  return <>{children}</>
+  return (
+    <ProductsContext.Provider value={{ products }}>
+      {children}
+    </ProductsContext.Provider>
+  )
 }
