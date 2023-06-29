@@ -1,4 +1,5 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
+import { apiBaseUrl } from '../api/api'
 import { setItem } from '../services/LocalStorageFuncs'
 
 interface IProductProps {
@@ -30,6 +31,15 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [quantity, setQuantity] = useState(
     quantityCart ? JSON.parse(quantityCart) : {},
   )
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      const response = await fetch(apiBaseUrl)
+      const objJson = await response.json()
+      setData(objJson.results)
+    }
+    fetchApi()
+  }, [])
 
   const addProduct = (product: IProductProps) => {
     const element = data.find((e: IProductProps) => e.id === product.id)

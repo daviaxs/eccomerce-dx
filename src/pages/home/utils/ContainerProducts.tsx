@@ -1,9 +1,8 @@
 import { Skeleton } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { apiBaseUrl } from '@/shared/api/api'
-import { getItem, setItem } from '@/shared/services/LocalStorageFuncs'
+import { CartContext } from '@/shared/contexts/CartContext'
 import { theme } from '@/shared/theme'
 import { Product } from './Product'
 import { CalcDiscout, roundNumber } from './calcDiscount'
@@ -28,37 +27,16 @@ const ContainerProductsStyle = styled.ul`
 
 export function ContainerProducts() {
   const [isLoading, setIsLoading] = useState(true)
-  const [data, setData] = useState([])
-  const [cart, setCart] = useState<IProductProps[]>(getItem('shopCart') || [])
+  const { data, addProduct } = useContext(CartContext)
 
   useEffect(() => {
-    const fetchApi = async () => {
-      setIsLoading(true)
-      const response = await fetch(apiBaseUrl)
-      const objJson = await response.json()
-      setData(objJson.results)
+    if (data.length > 0) {
       setIsLoading(false)
     }
-    fetchApi()
-  }, [])
+  }, [data])
 
   const handleClick = (obj: IProductProps) => {
-    const element = cart.find((e) => e.id === obj.id)
-
-    if (element) {
-      const arrFilter = cart.filter((e) => e.id !== obj.id)
-      setCart(arrFilter)
-      setItem({ key: 'shopCart', value: arrFilter })
-
-      const event = new CustomEvent('cartChange', { detail: arrFilter })
-      window.dispatchEvent(event)
-    } else {
-      setCart([...cart, obj])
-      setItem({ key: 'shopCart', value: [...cart, obj] })
-
-      const event = new CustomEvent('cartChange', { detail: [...cart, obj] })
-      window.dispatchEvent(event)
-    }
+    addProduct(obj)
   }
 
   return (
@@ -92,12 +70,12 @@ export function ContainerProducts() {
             price={e.price}
             description={e.title}
             buttonColorVariant={
-              cart.some((itemCart) => itemCart.id === e.id) ? 'red' : 'purple'
+              data.some((itemCart) => itemCart.id === e.id) ? 'purple' : 'red'
             }
             buttonText={
-              cart.some((itemCart) => itemCart.id === e.id)
-                ? 'Remover do carrinho'
-                : 'Adicionar ao carrinho'
+              data.some((itemCart) => itemCart.id === e.id)
+                ? 'Adicionar ao carrinho'
+                : 'Remover do carrinho'
             }
             onClick={() => handleClick(e)}
             oldPrice={
