@@ -14,7 +14,7 @@ interface ICartContext {
   quantity: { [key: string]: number }
   addProduct: (product: IProductProps) => void
   removeProduct: (id: string) => void
-  removeQuantity: (id: string) => void
+  removeProductQuantity: (id: string) => void
 }
 
 type CartProviderProps = {
@@ -71,7 +71,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     window.dispatchEvent(event)
   }
 
-  const removeQuantity = (id: string) => {
+  const removeProductQuantity = (id: string) => {
     const newQuantity = { ...quantity, [id]: quantity[id] - 1 }
     setQuantity(newQuantity)
     setItem({ key: 'quantity', value: newQuantity })
@@ -82,7 +82,13 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ data, addProduct, quantity, removeProduct, removeQuantity }}
+      value={{
+        data,
+        addProduct,
+        quantity,
+        removeProduct,
+        removeProductQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>
