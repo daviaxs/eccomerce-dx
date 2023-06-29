@@ -1,20 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import styled from 'styled-components'
 
 import { ShoppingCartEmpty } from '@/shared/assets/ShoppingCartEmpty'
 import { Container } from '@/shared/components/container/Container'
-import { setItem } from '@/shared/services/LocalStorageFuncs'
+import { CartContext } from '@/shared/contexts/CartContext'
 import { CartProduct } from './CartProduct'
-
-interface IProductProps {
-  id: string
-  title: string
-  thumbnail: string
-  price: number
-  original_price: number
-
-  counterProduct: string
-}
 
 const CartContentStyle = styled.ul`
   display: flex;
@@ -37,64 +27,20 @@ const CartContentStyle = styled.ul`
 `
 
 export function CartContent() {
-  const shopCart = localStorage.getItem('shopCart')
-  const [data, setData] = useState(shopCart ? JSON.parse(shopCart) : [])
-
-  const quantityCart = localStorage.getItem('quantity')
-  const [quantity, setQuantity] = useState(
-    quantityCart ? JSON.parse(quantityCart) : {},
-  )
-
-  const handleAdd = (id: string) => {
-    setQuantity({
-      ...quantity,
-      [id]: quantity[id] ? quantity[id] + 1 : 2,
-    })
-  }
-
-  const handleRemove = (id: string) => {
-    if (quantity[id] === 1) {
-      setData((prevData: IProductProps[]) => {
-        const newData = prevData.filter((e: IProductProps) => e.id !== id)
-
-        if (newData) {
-          setItem({ key: 'shopCart', value: newData })
-        }
-
-        return newData
-      })
-
-      setQuantity((prevQuantity: any) => {
-        const newQuantity = { ...prevQuantity }
-        delete newQuantity[id]
-        return newQuantity
-      })
-    } else {
-      setQuantity({
-        ...quantity,
-        [id]: quantity[id] - 1,
-      })
-    }
-  }
-
-  useEffect(() => {
-    if (Object.keys(quantity.length > 0)) {
-      setItem({ key: 'quantity', value: quantity })
-    }
-  }, [quantity])
+  const { data, addProduct, removeProduct, quantity } = useContext(CartContext)
 
   return (
     <CartContentStyle>
       {data.length > 0 ? (
-        data.map((e: IProductProps) => (
+        data.map((e) => (
           <CartProduct
             key={e.id}
             title={e.title}
             thumbnail={e.thumbnail}
             price={e.price}
             originalPrice={e.original_price ? e.original_price : undefined}
-            onClickAdd={() => handleAdd(e.id)}
-            onClickRemove={() => handleRemove(e.id)}
+            onClickAdd={() => addProduct(e)}
+            onClickRemove={() => removeProduct(e.id)}
             counterProduct={quantity[e.id] || 1}
           />
         ))
