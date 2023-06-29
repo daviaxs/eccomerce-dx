@@ -1,4 +1,4 @@
-import React, { createContext } from 'react'
+import React, { createContext, useState } from 'react'
 
 interface IProductProps {
   id: string
@@ -22,5 +22,13 @@ type CartProviderProps = {
 export const CartContext = createContext<ICartContext>({} as ICartContext)
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
+  const shopCart = localStorage.getItem('shopCart')
+  const quantityCart = localStorage.getItem('quantity')
+
+  const [data, setData] = useState(shopCart ? JSON.parse(shopCart) : [])
+  const [quantity, setQuantity] = useState(
+    quantityCart ? JSON.parse(quantityCart) : {},
+  )
+
   return <>{children}</>
 }
