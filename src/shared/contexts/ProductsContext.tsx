@@ -4,7 +4,7 @@ import { apiBaseUrl } from '../api/api'
 interface IProductProps {
   id: string
   title: string
-  thubnail: string
+  thumbnail: string
   price: number
   original_price: number
 }

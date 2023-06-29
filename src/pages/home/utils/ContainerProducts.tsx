@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { CartContext } from '@/shared/contexts/CartContext'
+import { ProductsContext } from '@/shared/contexts/ProductsContext'
 import { theme } from '@/shared/theme'
 import { Product } from './Product'
 import { CalcDiscout, roundNumber } from './calcDiscount'
@@ -27,16 +28,21 @@ const ContainerProductsStyle = styled.ul`
 
 export function ContainerProducts() {
   const [isLoading, setIsLoading] = useState(true)
-  const { data, addProduct } = useContext(CartContext)
+  const { products } = useContext(ProductsContext)
+  const { data, addProduct, removeProduct } = useContext(CartContext)
 
   useEffect(() => {
-    if (data.length > 0) {
+    if (products.length > 0) {
       setIsLoading(false)
     }
-  }, [data])
+  }, [products])
 
-  const handleClick = (obj: IProductProps) => {
-    addProduct(obj)
+  const handleAddProduct = (product: IProductProps) => {
+    addProduct(product)
+  }
+
+  const handleRemoveProduct = (id: string) => {
+    removeProduct(id)
   }
 
   return (
@@ -63,7 +69,7 @@ export function ContainerProducts() {
           />
         </>
       ) : (
-        data.map((e: IProductProps) => (
+        products.map((e: IProductProps) => (
           <Product
             key={e.id}
             img={e.thumbnail}
@@ -77,7 +83,11 @@ export function ContainerProducts() {
                 ? 'Adicionar ao carrinho'
                 : 'Remover do carrinho'
             }
-            onClick={() => handleClick(e)}
+            onClick={
+              data.some((itemCart) => itemCart.id === e.id)
+                ? () => handleRemoveProduct(e.id)
+                : () => handleAddProduct(e)
+            }
             oldPrice={
               e.original_price
                 ? e.price === e.original_price
