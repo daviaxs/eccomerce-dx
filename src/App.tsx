@@ -5,18 +5,21 @@ import { CartMenuProvider } from '@/shared/contexts/CartMenuContext'
 import { WindowDimensionsProvider } from '@/shared/contexts/WindowDimensionsContext'
 import { CartProvider } from './shared/contexts/CartContext'
 import { MenuNavProvider } from './shared/contexts/MenuNavContext'
+import { ProductsProvider } from './shared/contexts/ProductsContext'
 
 export function App() {
   return (
     <WindowDimensionsProvider>
       <CartProvider>
-        <MenuNavProvider>
-          <CartMenuProvider>
-            <BrowserRouter>
-              <AppRoutes />
-            </BrowserRouter>
-          </CartMenuProvider>
-        </MenuNavProvider>
+        <ProductsProvider>
+          <MenuNavProvider>
+            <CartMenuProvider>
+              <BrowserRouter>
+                <AppRoutes />
+              </BrowserRouter>
+            </CartMenuProvider>
+          </MenuNavProvider>
+        </ProductsProvider>
       </CartProvider>
     </WindowDimensionsProvider>
   )
