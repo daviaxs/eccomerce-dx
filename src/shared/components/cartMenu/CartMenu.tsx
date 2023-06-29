@@ -45,12 +45,15 @@ const CartMenuBG = styled.div`
 `
 
 const CartMenuStyle = styled.div<{ width: string }>`
-  position: fixed;
+  position: absolute;
   right: 0;
+
+  display: flex;
+  flex-direction: column;
 
   background-color: ${theme.gray[500]};
   box-shadow: -11px 0px 56px #000;
-  height: 100%;
+  height: 100vh;
   width: ${(props) => props.width};
 
   &.open {

@@ -12,9 +12,9 @@ const CartFooterStyle = styled.footer`
   background-color: ${theme.gray[800]};
   padding: 1rem 1rem 5rem;
   width: 100%;
+  height: 10rem;
 
-  position: absolute;
-  bottom: 0;
+  position: relative;
 
   .button {
     position: absolute;
@@ -24,12 +24,13 @@ const CartFooterStyle = styled.footer`
 
 export function CartFooter() {
   return (
-    <CartFooterStyle>
+    <CartFooterStyle className="footer">
       <Container
         display="flex"
         justifyContent="space-between"
         width="100%"
         height=""
+        className="a"
       >
         <THeadingPrimary fontSize={1}>Total:</THeadingPrimary>
         <THeadingPrimary fontSize={2}>R$ 325,90</THeadingPrimary>

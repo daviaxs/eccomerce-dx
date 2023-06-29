@@ -19,8 +19,6 @@ const CartHeaderStyle = styled.header`
   border-bottom: 1px solid ${theme.gray[400]};
   padding: 1.5rem;
 
-  position: fixed;
-
   .closeButton {
     cursor: pointer;
   }

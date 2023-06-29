@@ -8,6 +8,7 @@ import { CartProduct } from './CartProduct'
 
 const CartContentStyle = styled.ul`
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: start;
   justify-content: start;
@@ -17,8 +18,6 @@ const CartContentStyle = styled.ul`
   background-color: transparent;
 
   width: 100%;
-  height: 75%;
-  margin-top: 3.5rem;
   padding: 1rem 0 2rem 0;
 
   .shoppingCartEmpty {
