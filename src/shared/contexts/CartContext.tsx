@@ -61,5 +61,28 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
   }
 
+  const removeProduct = (id: string) => {
+    if (quantity[id] === 1) {
+      const newData = data.filter((e: IProductProps) => e.id !== id)
+      setData(newData)
+      setItem({ key: 'shopCart', value: newData })
+
+      const newQuantity = { ...quantity }
+      delete newQuantity[id]
+      setQuantity(newQuantity)
+      setItem({ key: 'quantity', value: newQuantity })
+
+      const event = new CustomEvent('cartChange', { detail: newData })
+      window.dispatchEvent(event)
+    } else {
+      const newQuantity = { ...quantity, [id]: quantity[id] - 1 }
+      setQuantity(newQuantity)
+      setItem({ key: 'quantity', value: newQuantity })
+
+      const event = new CustomEvent('cartChange', { detail: data })
+      window.dispatchEvent(event)
+    }
+  }
+
   return <>{children}</>
 }
