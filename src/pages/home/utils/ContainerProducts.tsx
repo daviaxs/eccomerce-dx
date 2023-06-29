@@ -29,7 +29,7 @@ const ContainerProductsStyle = styled.ul`
 export function ContainerProducts() {
   const [isLoading, setIsLoading] = useState(true)
   const { products } = useContext(ProductsContext)
-  const { addProduct, data } = useContext(CartContext)
+  const { addProduct, removeProduct, data } = useContext(CartContext)
 
   useEffect(() => {
     if (products.length > 0) {
@@ -37,8 +37,12 @@ export function ContainerProducts() {
     }
   }, [products])
 
-  const handleClick = (product: IProductProps) => {
+  const handleAddProduct = (product: IProductProps) => {
     addProduct(product)
+  }
+
+  const handleRemoveProduct = (id: string) => {
+    removeProduct(id)
   }
 
   return (
@@ -79,7 +83,11 @@ export function ContainerProducts() {
                 ? 'Remover do carrinho'
                 : 'Adicionar ao carrinho'
             }
-            onClick={() => handleClick(e)}
+            onClick={
+              data.some((itemCart) => itemCart.id === e.id)
+                ? () => handleRemoveProduct(e.id)
+                : () => handleAddProduct(e)
+            }
             oldPrice={
               e.original_price
                 ? e.price === e.original_price
