@@ -1,13 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useMemo } from 'react'
 import { CartContext } from '../contexts/CartContext'
 
 export function useCartLength() {
   const { data } = useContext(CartContext)
-  const [cartLength, setCartLength] = useState(0)
 
-  useEffect(() => {
-    setCartLength(data.length)
-  }, [data])
+  const cartLength = useMemo(() => data?.length || 0, [data])
 
   return cartLength
 }
