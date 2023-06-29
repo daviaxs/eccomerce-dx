@@ -1,25 +1,13 @@
-import { useEffect, useState } from 'react'
-import { getItem } from './LocalStorageFuncs'
+import { useContext, useEffect, useState } from 'react'
+import { CartContext } from '../contexts/CartContext'
 
 export function useCartLength() {
-  const [dataCart, setDataCart] = useState(getItem('shopCart'))
+  const { data } = useContext(CartContext)
   const [cartLength, setCartLength] = useState(0)
 
   useEffect(() => {
-    const handleCartChange = (event: any) => {
-      setDataCart(event.detail)
-    }
-
-    window.addEventListener('cartChange', handleCartChange)
-
-    return () => {
-      window.removeEventListener('cartChange', handleCartChange)
-    }
-  }, [])
-
-  useEffect(() => {
-    setCartLength(dataCart?.length || 0)
-  }, [dataCart])
+    setCartLength(data.length)
+  }, [data])
 
   return cartLength
 }
