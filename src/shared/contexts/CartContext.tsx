@@ -56,36 +56,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
   }
 
-  // const addProduct = (product: IProductProps) => {
-  //   const productInCart = data.find((e: IProductProps) => e.id === product.id)
-
-  //   if (productInCart) {
-  //     const newData = data.find((e: IProductProps) => e.id !== product.id)
-  //     setData(newData)
-  //     setItem({ key: 'shopCart', value: newData })
-
-  //     const newQuantity = { ...quantity }
-  //     delete newQuantity[product.id]
-  //     setQuantity(newQuantity)
-  //     setItem({ key: 'quantity', value: newQuantity })
-
-  //     const event = new CustomEvent('cartChange', { detail: newData })
-  //     window.dispatchEvent(event)
-  //   } else {
-  //     setData([...data, product])
-  //     setItem({ key: 'shopCart', value: [...data, product] })
-
-  //     const newQuantity = { ...quantity, [product.id]: 1 }
-  //     setQuantity(newQuantity)
-  //     setItem({ key: 'quantity', value: newQuantity })
-
-  //     const event = new CustomEvent('cartChange', {
-  //       detail: [...data, product],
-  //     })
-  //     window.dispatchEvent(event)
-  //   }
-  // }
-
   const removeProduct = (id: string) => {
     if (quantity[id] === 1) {
       const newData = data.filter((e: IProductProps) => e.id !== id)
