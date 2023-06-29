@@ -1,4 +1,5 @@
 import React, { createContext, useState } from 'react'
+import { setItem } from '../services/LocalStorageFuncs'
 
 interface IProductProps {
   id: string
@@ -29,6 +30,36 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [quantity, setQuantity] = useState(
     quantityCart ? JSON.parse(quantityCart) : {},
   )
+
+  const addProduct = (product: IProductProps) => {
+    const element = data.find((e: IProductProps) => e.id === product.id)
+
+    if (element) {
+      const newData = data.find((e: IProductProps) => e.id !== product.id)
+      setData(newData)
+      setItem({ key: 'shopCart', value: newData })
+
+      const newQuantity = { ...quantity }
+      delete newQuantity[product.id]
+      setQuantity(newQuantity)
+      setItem({ key: 'quantity', value: newQuantity })
+
+      const event = new CustomEvent('cartChange', { detail: newData })
+      window.dispatchEvent(event)
+    } else {
+      setData([...data, product])
+      setItem({ key: 'shopCart', value: [...data, product] })
+
+      const newQuantity = { ...quantity, [product.id]: 1 }
+      setQuantity(newQuantity)
+      setItem({ key: 'quantity', value: newQuantity })
+
+      const event = new CustomEvent('cartChange', {
+        detail: [...data, product],
+      })
+      window.dispatchEvent(event)
+    }
+  }
 
   return <>{children}</>
 }
