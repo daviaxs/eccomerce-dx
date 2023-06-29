@@ -72,12 +72,16 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   const removeProductQuantity = (id: string) => {
-    const newQuantity = { ...quantity, [id]: quantity[id] - 1 }
-    setQuantity(newQuantity)
-    setItem({ key: 'quantity', value: newQuantity })
+    if (quantity[id] === 1) {
+      removeProduct(id)
+    } else {
+      const newQuantity = { ...quantity, [id]: quantity[id] - 1 }
+      setQuantity(newQuantity)
+      setItem({ key: 'quantity', value: newQuantity })
 
-    const event = new CustomEvent('cartChange', { detail: data })
-    window.dispatchEvent(event)
+      const event = new CustomEvent('cartChange', { detail: data })
+      window.dispatchEvent(event)
+    }
   }
 
   return (
