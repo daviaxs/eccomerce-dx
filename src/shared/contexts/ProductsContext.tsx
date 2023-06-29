@@ -1,4 +1,5 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
+import { apiBaseUrl } from '../api/api'
 
 interface IProductProps {
   id: string
@@ -23,5 +24,16 @@ export const ProductsContext = createContext<IProductsContext>(
 export const ProductsProvider: React.FC<ProductsProviderProps> = ({
   children,
 }) => {
+  const [products, setProducts] = useState<IProductProps[]>([])
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      const response = await fetch(apiBaseUrl)
+      const objJson = await response.json()
+      setProducts(objJson.results)
+    }
+    fetchApi()
+  }, [])
+
   return <>{children}</>
 }
