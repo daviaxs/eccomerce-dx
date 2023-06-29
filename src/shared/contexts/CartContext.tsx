@@ -14,6 +14,7 @@ interface ICartContext {
   quantity: { [key: string]: number }
   addProduct: (product: IProductProps) => void
   removeProduct: (id: string) => void
+  removeQuantity: (id: string) => void
 }
 
 type CartProviderProps = {
@@ -57,30 +58,32 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   const removeProduct = (id: string) => {
-    if (quantity[id] === 1) {
-      const newData = data.filter((e: IProductProps) => e.id !== id)
-      setData(newData)
-      setItem({ key: 'shopCart', value: newData })
+    const newData = data.filter((e: IProductProps) => e.id !== id)
+    setData(newData)
+    setItem({ key: 'shopCart', value: newData })
 
-      const newQuantity = { ...quantity }
-      delete newQuantity[id]
-      setQuantity(newQuantity)
-      setItem({ key: 'quantity', value: newQuantity })
+    const newQuantity = { ...quantity }
+    delete newQuantity[id]
+    setQuantity(newQuantity)
+    setItem({ key: 'quantity', value: newQuantity })
 
-      const event = new CustomEvent('cartChange', { detail: newData })
-      window.dispatchEvent(event)
-    } else {
-      const newQuantity = { ...quantity, [id]: quantity[id] - 1 }
-      setQuantity(newQuantity)
-      setItem({ key: 'quantity', value: newQuantity })
+    const event = new CustomEvent('cartChange', { detail: newData })
+    window.dispatchEvent(event)
+  }
 
-      const event = new CustomEvent('cartChange', { detail: data })
-      window.dispatchEvent(event)
-    }
+  const removeQuantity = (id: string) => {
+    const newQuantity = { ...quantity, [id]: quantity[id] - 1 }
+    setQuantity(newQuantity)
+    setItem({ key: 'quantity', value: newQuantity })
+
+    const event = new CustomEvent('cartChange', { detail: data })
+    window.dispatchEvent(event)
   }
 
   return (
-    <CartContext.Provider value={{ data, addProduct, quantity, removeProduct }}>
+    <CartContext.Provider
+      value={{ data, addProduct, quantity, removeProduct, removeQuantity }}
+    >
       {children}
     </CartContext.Provider>
   )

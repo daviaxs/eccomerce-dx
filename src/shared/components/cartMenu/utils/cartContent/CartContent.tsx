@@ -27,7 +27,7 @@ const CartContentStyle = styled.ul`
 `
 
 export function CartContent() {
-  const { data, addProduct, removeProduct, quantity } = useContext(CartContext)
+  const { data, addProduct, removeQuantity, quantity } = useContext(CartContext)
 
   return (
     <CartContentStyle>
@@ -40,7 +40,7 @@ export function CartContent() {
             price={e.price}
             originalPrice={e.original_price ? e.original_price : undefined}
             onClickAdd={() => addProduct(e)}
-            onClickRemove={() => removeProduct(e.id)}
+            onClickRemove={() => removeQuantity(e.id)}
             counterProduct={quantity[e.id] || 1}
           />
         ))
