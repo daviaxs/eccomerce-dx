@@ -38,7 +38,7 @@ export function CartFooter() {
 
   function CompletedPurchase() {
     swal({
-      title: 'Compra concluida com sucesso!',
+      title: 'Compra realizada com sucesso!',
       icon: 'success',
     })
   }
