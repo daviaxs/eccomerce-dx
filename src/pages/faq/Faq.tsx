@@ -1,4 +1,5 @@
 import { Container } from '@/shared/components/container/Container'
+import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout'
 
 export function Faq() {
@@ -11,7 +12,9 @@ export function Faq() {
         flexDir="column"
         width="100%"
         height="100%"
-      ></Container>
+      >
+        <THeadingPrimary>FAQ - Perguntas Frequentes</THeadingPrimary>
+      </Container>
     </LayoutBaseDePagina>
   )
 }
