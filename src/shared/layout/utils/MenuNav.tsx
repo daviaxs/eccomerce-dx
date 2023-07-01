@@ -2,7 +2,7 @@ import { LucideHome, Newspaper } from 'lucide-react'
 import { useContext } from 'react'
 import styled from 'styled-components'
 
-import { NavButtonMobile } from '@/shared/components/navButton/NavButtonMobile'
+import { NavButtonMobile } from '@/shared/components/navButton/BotaoNavegarMobile'
 import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
