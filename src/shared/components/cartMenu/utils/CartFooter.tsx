@@ -53,7 +53,7 @@ export function CartFooter() {
         width="90%"
         onClick={() => alert('hello world')}
         className="button"
-        disabled
+        disabled={!(data.length > 0)}
       >
         <THeadingPrimary txtColor="white" fontSize={1.5}>
           Concluir compra
