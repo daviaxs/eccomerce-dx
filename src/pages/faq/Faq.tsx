@@ -1,3 +1,4 @@
+
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout'
@@ -9,6 +10,7 @@ export function Faq() {
         display="flex"
         align="center"
         justifyContent="start"
+        gap={2}
         flexDir="column"
         width="100%"
         height="100%"
