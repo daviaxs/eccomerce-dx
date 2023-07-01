@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import styled from 'styled-components'
+import swal from 'sweetalert'
 
 import { CartContext } from '@/shared/contexts/CartContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
@@ -35,6 +36,13 @@ export function CartFooter() {
     return accumulator + current.price * (quantity[current.id] || 1)
   }, 0)
 
+  function CompletedPurchase() {
+    swal({
+      title: 'Compra concluida com sucesso!',
+      icon: 'success',
+    })
+  }
+
   return (
     <CartFooterStyle className="footer">
       <Container
@@ -65,7 +73,7 @@ export function CartFooter() {
       <ButtonPrimary
         variant="green"
         width="90%"
-        onClick={() => alert('hello world')}
+        onClick={CompletedPurchase}
         className="button"
         disabled={!(data.length > 0)}
       >
