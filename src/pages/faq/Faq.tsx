@@ -19,7 +19,7 @@ export function Faq() {
         <THeadingPrimary>FAQ - Perguntas Frequentes</THeadingPrimary>
 
         <Accordions>
-          <Accordion>
+          <Accordion label="hello world" text="hello world" />
         </Accordions>
       </Container>
     </LayoutBaseDePagina>

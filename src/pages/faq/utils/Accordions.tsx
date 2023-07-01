@@ -7,6 +7,8 @@ const AccordionsStyle = styled.div`
     background-color: ${theme.gray[500]};
     outline: 1px solid ${theme.gray[400]};
     color: ${theme.gray[50]};
+
+    width: 90vw;
   }
 `
 
