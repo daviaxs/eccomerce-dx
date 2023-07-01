@@ -1,7 +1,8 @@
-
 import { Container } from '@/shared/components/container/Container'
 import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout'
+import { Accordion } from './utils/Accordion'
+import { Accordions } from './utils/Accordions'
 
 export function Faq() {
   return (
@@ -16,6 +17,10 @@ export function Faq() {
         height="100%"
       >
         <THeadingPrimary>FAQ - Perguntas Frequentes</THeadingPrimary>
+
+        <Accordions>
+          <Accordion>
+        </Accordions>
       </Container>
     </LayoutBaseDePagina>
   )

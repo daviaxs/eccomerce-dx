@@ -8,7 +8,12 @@ import { ChevronDown } from 'lucide-react'
 import { TTitlePrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 
-export function Accordion() {
+interface AccordionProps {
+  label: string
+  text: string
+}
+
+export function Accordion({ label, text }: AccordionProps) {
   return (
     <AccordionMui className="accordion">
       <AccordionSummary
@@ -16,17 +21,10 @@ export function Accordion() {
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <TTitlePrimary fontSize={1.5}>
-          Quais são os métodos de pagamento aceitos?
-        </TTitlePrimary>
+        <TTitlePrimary fontSize={1.5}>{label}</TTitlePrimary>
       </AccordionSummary>
       <AccordionDetails>
-        <TTitlePrimary fontSize={1.2}>
-          Aceitamos várias formas de pagamento, incluindo cartões de crédito
-          (Visa, Mastercard, American Express), PayPal e transferência bancária.
-          Escolha a opção que melhor atende às suas necessidades durante o
-          processo de compra.
-        </TTitlePrimary>
+        <TTitlePrimary fontSize={1.2}>{text}</TTitlePrimary>
       </AccordionDetails>
     </AccordionMui>
   )
