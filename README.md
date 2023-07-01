@@ -32,7 +32,8 @@ Este site de comércio eletrônico foi desenvolvido como um projeto pessoal, com
 
 Nos links abaixo você encontra o layout do projeto. Lembrando que você precisa ter uma conta no [Figma](http://figma.com/) para acessá-lo.
 
-- [Layout](https://www.figma.com/file/ShHJudkl0TrSRZRnom0uta/Carrinho-de-compras?type=design&node-id=0%3A1&mode=design&t=TZ9rA1qUCHfZm0R4-1)
+<a href="https://www.figma.com/file/ShHJudkl0TrSRZRnom0uta/Carrinho-de-compras?type=design&node-id=0%3A1&mode=design&t=TZ9rA1qUCHfZm0R4-1" target="_blank">Layout</a>
+
 
 ---
 
