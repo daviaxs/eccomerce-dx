@@ -22,6 +22,17 @@ li {
   list-style: none;
 }
 
+.swal-modal,
+.swal-icon--success:before,
+.swal-icon--success:after,
+.swal-icon--success__hide-corners,
+.swal-icon--success,
+.swal-title {
+  background: rgb(49, 49, 49);
+  border-color: rgb(49, 49, 49);
+  color: white;
+}
+
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
