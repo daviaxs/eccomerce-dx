@@ -25,10 +25,10 @@ const CartFooterStyle = styled.footer`
 `
 
 export function CartFooter() {
-  const { data } = useContext(CartContext)
+  const { data, quantity } = useContext(CartContext)
 
   const totalPrice = data.reduce((accumulator, current) => {
-    return accumulator + current.price
+    return accumulator + current.price * (quantity[current.id] || 1)
   }, 0)
 
   return (
