@@ -15,6 +15,7 @@ interface ICartContext {
   addProduct: (product: IProductProps) => void
   removeProduct: (id: string) => void
   removeProductQuantity: (id: string) => void
+  clearCart: () => void
 }
 
 type CartProviderProps = {
@@ -84,6 +85,13 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     }
   }
 
+  const clearCart = () => {
+    setData([])
+    setQuantity({})
+    localStorage.removeItem('shopCart')
+    localStorage.removeItem('quantity')
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -92,6 +100,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         quantity,
         removeProduct,
         removeProductQuantity,
+        clearCart,
       }}
     >
       {children}
