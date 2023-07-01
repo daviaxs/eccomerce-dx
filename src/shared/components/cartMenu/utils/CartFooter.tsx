@@ -2,6 +2,7 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 
 import { CartContext } from '@/shared/contexts/CartContext'
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 import { ButtonPrimary } from '../../buttons/ButtonPrimary'
@@ -26,6 +27,7 @@ const CartFooterStyle = styled.footer`
 `
 
 export function CartFooter() {
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
   const { data, quantity } = useContext(CartContext)
 
   const totalPrice = data.reduce((accumulator, current) => {
@@ -42,7 +44,7 @@ export function CartFooter() {
         className="a"
       >
         <THeadingPrimary fontSize={1}>Total:</THeadingPrimary>
-        <THeadingPrimary fontSize={2}>
+        <THeadingPrimary fontSize={windowWidth <= 400 ? 1.5 : 2}>
           {totalPrice.toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL',
