@@ -1,7 +1,9 @@
+import { useContext } from 'react'
 import styled from 'styled-components'
 
 import { ContainerProducts } from '@/pages/home/utils/ContainerProducts'
 import { Container } from '@/shared/components/container/Container'
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary, TTitlePrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout/LayoutBaseDePagina'
 import { theme } from '@/shared/theme'
@@ -22,13 +24,23 @@ const LineStyle = styled.span`
 `
 
 export function Home() {
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
+
   return (
     <LayoutBaseDePagina>
       <Container display="flex" flexDir="column" gap={1} height="" width="">
-        <THeadingPrimary txtColor={theme.gray[50]}>
+        <THeadingPrimary
+          fontSize={windowWidth <= 600 ? 1.5 : 2}
+          textAlign={windowWidth <= 600 ? 'center' : 'start'}
+          txtColor={theme.gray[50]}
+        >
           Bem-vindo ao nosso incrível mundo de tecnologia móvel!
         </THeadingPrimary>
-        <TTitlePrimary txtColor={theme.gray[200]} fontSize={1.2}>
+        <TTitlePrimary
+          fontSize={windowWidth <= 600 ? 0.9 : 1.2}
+          textAlign={windowWidth <= 600 ? 'center' : 'start'}
+          txtColor={theme.gray[200]}
+        >
           Explore nosso site agora e descubra uma infinidade de recursos,
           ofertas irresistíveis e a conveniência de fazer suas compras online.
           Não se contente com menos do que você merece.
