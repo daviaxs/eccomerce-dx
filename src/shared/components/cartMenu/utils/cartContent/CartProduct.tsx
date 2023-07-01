@@ -114,6 +114,7 @@ export function CartProduct({
             gap={0.5}
             width=""
             height=""
+            marginLeft={-0.2}
             className="buttonsCounter"
           >
             <ButtonAddAndRemove variant="default" onClick={onClickRemove}>

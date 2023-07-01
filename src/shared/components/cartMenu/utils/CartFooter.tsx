@@ -1,8 +1,9 @@
+import { useContext } from 'react'
+import styled from 'styled-components'
+
 import { CartContext } from '@/shared/contexts/CartContext'
 import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
-import { useContext } from 'react'
-import styled from 'styled-components'
 import { ButtonPrimary } from '../../buttons/ButtonPrimary'
 import { Container } from '../../container/Container'
 
