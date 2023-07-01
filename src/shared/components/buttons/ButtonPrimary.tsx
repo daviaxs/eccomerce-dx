@@ -7,6 +7,7 @@ interface IButtonPrimaryProps {
   width: '100%' | '90%'
   children: React.ReactNode
   className: string
+  disabled?: boolean
   onClick: () => void
 }
 
@@ -77,6 +78,13 @@ const ButtonPrimaryStyle = styled.button<IButtonPrimaryProps>`
   &:focus-visible {
     outline: 0.2rem solid ${(props) => getButtonColorFocus(props.variant)};
   }
+
+  &:disabled {
+    cursor: no-drop;
+    outline: none;
+    background-color: ${(props) => getButtonColorDefault(props.variant)};
+    opacity: 50%;
+  }
 `
 
 export function ButtonPrimary({
@@ -84,6 +92,7 @@ export function ButtonPrimary({
   variant,
   width,
   onClick,
+  disabled,
   className,
 }: IButtonPrimaryProps) {
   return (
@@ -92,6 +101,7 @@ export function ButtonPrimary({
       variant={variant}
       width={width}
       onClick={onClick}
+      disabled={disabled}
     >
       {children}
     </ButtonPrimaryStyle>
