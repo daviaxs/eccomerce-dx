@@ -6,6 +6,7 @@ import { Container } from '@/shared/components/container/Container'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
+import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
 
 interface IProductProps {
   img: string
@@ -69,6 +70,7 @@ export function Product({
   onClick,
 }: IProductProps) {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
+  const { expandedCartMenu } = useCartMenuContext()
 
   return (
     <ProductStyle width={windowWidth <= 450 ? '100%' : '23rem'}>
@@ -136,6 +138,7 @@ export function Product({
         width="90%"
         onClick={onClick}
         className="button"
+        disabled={expandedCartMenu}
       >
         <THeadingPrimary
           fontSize={windowWidth <= 450 ? 1 : 1.5}
