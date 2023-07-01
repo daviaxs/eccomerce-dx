@@ -7,6 +7,7 @@ import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 import { ButtonPrimary } from '../../buttons/ButtonPrimary'
 import { Container } from '../../container/Container'
+import { ButtonClearCart } from './ButtonClearCart'
 
 const CartFooterStyle = styled.footer`
   display: flex;
@@ -28,7 +29,7 @@ const CartFooterStyle = styled.footer`
 
 export function CartFooter() {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
-  const { data, quantity } = useContext(CartContext)
+  const { data, quantity, clearCart } = useContext(CartContext)
 
   const totalPrice = data.reduce((accumulator, current) => {
     return accumulator + current.price * (quantity[current.id] || 1)
@@ -44,13 +45,23 @@ export function CartFooter() {
         className="a"
       >
         <THeadingPrimary fontSize={1}>Total:</THeadingPrimary>
-        <THeadingPrimary fontSize={windowWidth <= 400 ? 1.5 : 2}>
-          {totalPrice.toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'BRL',
-          })}
-        </THeadingPrimary>
+        <Container
+          display="flex"
+          flexDir="column"
+          align="end"
+          width=""
+          height=""
+        >
+          <THeadingPrimary fontSize={windowWidth <= 400 ? 1.5 : 2}>
+            {totalPrice.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </THeadingPrimary>
+          {data.length > 0 && <ButtonClearCart onClick={clearCart} />}
+        </Container>
       </Container>
+
       <ButtonPrimary
         variant="green"
         width="90%"
