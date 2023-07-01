@@ -1,10 +1,13 @@
 import { Container } from '@/shared/components/container/Container'
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout'
+import { useContext } from 'react'
 import { Accordion } from './utils/Accordion'
 import { Accordions } from './utils/Accordions'
 
 export function Faq() {
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
   return (
     <LayoutBaseDePagina>
       <Container
@@ -16,7 +19,12 @@ export function Faq() {
         width="100%"
         height="100%"
       >
-        <THeadingPrimary>FAQ - Perguntas Frequentes</THeadingPrimary>
+        <THeadingPrimary
+          textAlign="center"
+          fontSize={windowWidth <= 550 ? 1.5 : 2}
+        >
+          FAQ - Perguntas Frequentes
+        </THeadingPrimary>
 
         <Accordions>
           <Accordion
