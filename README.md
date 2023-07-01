@@ -26,7 +26,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 Este site de comércio eletrônico foi desenvolvido como um projeto pessoal, com o objetivo de oferecer uma experiência única de compra de celulares.
 
->  (Este site tem finalidade meramente ilustrativa e informativa. Por favor, esteja ciente de que não é possível realizar compras ou transações financeiras através desta plataforma. Ele foi criado com o propósito de demonstrar um exemplo de um site de comércio eletrônico e apresentar informações sobre produtos relacionados a celulares. Para adquirir produtos reais, por favor, visite lojas online confiáveis e autorizadas.).
+>  Este site tem finalidade meramente ilustrativa e informativa. Por favor, esteja ciente de que não é possível realizar compras ou transações financeiras através desta plataforma. Ele foi criado com o propósito de demonstrar um exemplo de um site de comércio eletrônico e apresentar informações sobre produtos relacionados a celulares. Para adquirir produtos reais, por favor, visite lojas online confiáveis e autorizadas.
 
 ## 🔖 Layout
 
