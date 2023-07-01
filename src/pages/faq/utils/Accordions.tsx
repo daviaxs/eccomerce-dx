@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const AccordionsStyle = styled.div`
+  padding-bottom: 1rem;
   .accordion {
     background-color: ${theme.gray[500]};
     outline: 1px solid ${theme.gray[400]};
