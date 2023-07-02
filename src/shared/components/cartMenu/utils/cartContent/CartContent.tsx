@@ -29,6 +29,13 @@ export function CartContent() {
   // eslint-disable-next-line prettier/prettier
   const { data, addProduct, removeProductQuantity, quantity } = useContext(CartContext)
 
+  const cloudinaryId = 'dgaszw6fn'
+
+  function getCloudinaryUrl(imageUrl: string) {
+    const escapedUrl = encodeURIComponent(imageUrl)
+    return `http://res.cloudinary.com/${cloudinaryId}/image/fetch/${escapedUrl}`
+  }
+
   return (
     <CartContentStyle>
       {data.length > 0 ? (
@@ -36,7 +43,7 @@ export function CartContent() {
           <CartProduct
             key={e.id}
             title={e.title}
-            thumbnail={e.thumbnail}
+            thumbnail={getCloudinaryUrl(e.thumbnail)}
             price={e.price}
             originalPrice={e.original_price ? e.original_price : undefined}
             onClickAdd={() => addProduct(e)}

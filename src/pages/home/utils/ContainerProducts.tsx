@@ -45,6 +45,13 @@ export function ContainerProducts() {
     removeProduct(id)
   }
 
+  const cloudinaryId = 'dgaszw6fn'
+
+  function getCloudinaryUrl(imageUrl: string) {
+    const escapedUrl = encodeURIComponent(imageUrl)
+    return `http://res.cloudinary.com/${cloudinaryId}/image/fetch/${escapedUrl}`
+  }
+
   return (
     <ContainerProductsStyle>
       {isLoading ? (
@@ -72,7 +79,7 @@ export function ContainerProducts() {
         products.map((e: IProductProps) => (
           <Product
             key={e.id}
-            img={e.thumbnail}
+            img={getCloudinaryUrl(e.thumbnail)}
             price={e.price}
             description={e.title}
             buttonColorVariant={
