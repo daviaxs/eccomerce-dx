@@ -33,7 +33,7 @@ export function CartContent() {
 
   function getCloudinaryUrl(imageUrl: string) {
     const escapedUrl = encodeURIComponent(imageUrl)
-    return `http://res.cloudinary.com/${cloudinaryId}/image/fetch/${escapedUrl}`
+    return `https://res.cloudinary.com/${cloudinaryId}/image/fetch/${escapedUrl}`
   }
 
   return (
