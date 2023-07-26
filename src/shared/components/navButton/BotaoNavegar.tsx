@@ -2,57 +2,37 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
+import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { theme } from '@/shared/theme'
 
-interface INavButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface INavButtonMobileProps {
   to: string
   children: React.ReactNode
 }
 
-const NavButtonStyle = styled.button`
+const NavButtonMobileStyle = styled.button`
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: start;
+  padding: 0.625rem 1rem;
+  gap: 1rem;
+  background-color: ${theme.gray[600]};
+  color: ${theme.gray[50]};
+  border-radius: 0.5rem;
 
-  background: transparent;
-  background-blend-mode: overlay;
+  width: 100%;
+  height: 4rem;
+
   border: none;
-
-  white-space: nowrap;
   cursor: pointer;
-  z-index: 1;
-
   transition: all 0.2s ease-out;
 
-  &::before {
-    content: '';
-
-    position: absolute;
-    bottom: 0;
-    z-index: -1;
-
-    width: 0;
-    height: 0.2rem;
-
-    background-color: ${theme.purple[500]};
-    transition: width 0.2s ease-in;
-  }
-
   &&:hover {
-    transform: scale(1.05);
-  }
-
-  &&:hover::before {
-    width: 100%;
-  }
-
-  &.active::before {
-    width: 100%;
+    transform: scale(1.02);
   }
 
   &.inactive {
-    opacity: 60%;
+    opacity: 50%;
   }
 
   &.inactive:hover {
@@ -60,18 +40,18 @@ const NavButtonStyle = styled.button`
   }
 `
 
-export function NavButton({ children, to, ...rest }: INavButtonProps) {
+export function NavButton({ children, to, ...rest }: INavButtonMobileProps) {
+  const { toggleMenuNav } = useMenuNavContext()
+
   return (
-    <NavLink to={to}>
+    <NavLink to={to} style={{ width: '100%' }} onClick={toggleMenuNav}>
       {(props) => (
-        <NavButtonStyle
+        <NavButtonMobileStyle
           className={props.isActive ? 'active' : 'inactive'}
           {...rest}
         >
-          <THeadingSecondary txtColor={theme.gray[50]} fontSize={1}>
-            {children}
-          </THeadingSecondary>
-        </NavButtonStyle>
+          {children}
+        </NavButtonMobileStyle>
       )}
     </NavLink>
   )
