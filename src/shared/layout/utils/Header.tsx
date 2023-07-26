@@ -7,7 +7,9 @@ import { IconButton } from '@/shared/components/iconButton/IconButton'
 import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { theme } from '@/shared/theme'
+import { useLocation } from 'react-router-dom'
 import { OpenCartButton } from './OpenCartButton'
+import { Search } from './Search/Search'
 
 interface HeaderProps {
   openCart: () => void
@@ -49,6 +51,7 @@ const HeaderStyle = styled.header`
 export function Header({ openCart }: HeaderProps) {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
   const { toggleMenuNav, expandedMenu } = useMenuNavContext()
+  const currentPage = useLocation()
 
   return (
     <HeaderStyle>
@@ -67,6 +70,7 @@ export function Header({ openCart }: HeaderProps) {
           )}
         </IconButton>
         <OpenCartButton onClick={openCart} />
+        {currentPage.pathname === '/pagina-inicial' && <Search />}
       </>
     </HeaderStyle>
   )
