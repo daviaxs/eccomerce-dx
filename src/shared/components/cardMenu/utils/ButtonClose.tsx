@@ -2,7 +2,7 @@ import { theme } from '@/shared/theme'
 import { ChevronRight } from 'lucide-react'
 import styled from 'styled-components'
 
-interface IButtonCloseProps {
+interface ButtonCloseProps {
   onClick: () => void
 }
 
@@ -29,7 +29,7 @@ const ButtonCloseStyle = styled.button`
   }
 `
 
-export function ButtonClose({ onClick }: IButtonCloseProps) {
+export function ButtonClose({ onClick }: ButtonCloseProps) {
   return (
     <ButtonCloseStyle onClick={onClick}>
       <ChevronRight />

@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
 
 import { Container } from '@/shared/components/container/Container'
 import { Header } from '@/shared/layout/utils/Header'
-import { CartMenu } from '../components/cartMenu/CartMenu'
+import { CardMenu } from '../components/cardMenu/CardMenu'
+import { useCartLength } from '../services/CartLength'
 import { MenuNav } from './utils/MenuNav'
+import { CartFooter } from './utils/cartMenu/CartFooter'
+import { CartContent } from './utils/cartMenu/cartContent/CartContent'
+import { getCartText } from './utils/cartMenu/getCartText'
 
 interface ILayoutBaseDePaginaProps {
   children: React.ReactNode
@@ -20,11 +24,25 @@ const Box = styled.div`
 `
 
 export function LayoutBaseDePagina({ children }: ILayoutBaseDePaginaProps) {
+  const [expandedCartMenu, setExpandedCartMenu] = useState(false)
+  const cartLength = useCartLength()
+
+  const toggleCartMenu = useCallback(() => {
+    setExpandedCartMenu(!expandedCartMenu)
+  }, [expandedCartMenu])
+
   return (
     <Box>
-      <Header />
+      <Header openCart={toggleCartMenu} />
       <MenuNav />
-      <CartMenu />
+      <CardMenu
+        label={getCartText(cartLength)}
+        expanded={expandedCartMenu}
+        closeCard={toggleCartMenu}
+      >
+        <CartContent />
+        <CartFooter />
+      </CardMenu>
       <Container
         display="flex"
         flexDir="column"

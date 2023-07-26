@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { apiBaseUrl } from '../api/api'
+import { useSearchInputContext } from './SearchInputContext'
 
 interface IProductProps {
   id: string
@@ -25,15 +26,18 @@ export const ProductsProvider: React.FC<ProductsProviderProps> = ({
   children,
 }) => {
   const [products, setProducts] = useState<IProductProps[]>([])
+  const { inputValue } = useSearchInputContext()
 
   useEffect(() => {
     const fetchApi = async () => {
-      const response = await fetch(apiBaseUrl)
+      const response = await fetch(
+        `${apiBaseUrl}${inputValue.length > 0 ? inputValue : 'em alta'}`,
+      )
       const objJson = await response.json()
       setProducts(objJson.results)
     }
     fetchApi()
-  }, [])
+  }, [inputValue])
 
   return (
     <ProductsContext.Provider value={{ products }}>

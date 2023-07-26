@@ -1,10 +1,13 @@
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
 import styled from 'styled-components'
 
-import { useCartMenuContext } from '@/shared/contexts/CartMenuContext'
 import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { useCartLength } from '@/shared/services/CartLength'
 import { theme } from '@/shared/theme'
+
+interface OpenCartButtonProps {
+  onClick: () => void
+}
 
 const OpenCartButtonStyle = styled.button`
   display: flex;
@@ -66,12 +69,11 @@ const OpenCartButtonStyle = styled.button`
   }
 `
 
-export function OpenCartButton() {
-  const { toggleCartMenu } = useCartMenuContext()
+export function OpenCartButton({ onClick }: OpenCartButtonProps) {
   const cartLength = useCartLength()
 
   return (
-    <OpenCartButtonStyle className="OpenCartButton" onClick={toggleCartMenu}>
+    <OpenCartButtonStyle className="OpenCartButton" onClick={onClick}>
       <ChevronLeft color={theme.gray[100]} className="arrowIcon" />
       {cartLength > 0 && (
         <span className="alert">

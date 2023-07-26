@@ -6,8 +6,8 @@ import { CartContext } from '@/shared/contexts/CartContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
-import { ButtonPrimary } from '../../buttons/ButtonPrimary'
-import { Container } from '../../container/Container'
+import { ButtonPrimary } from '@/shared/components/buttons/ButtonPrimary'
+import { Container } from '@/shared/components/container/Container'
 import { ButtonClearCart } from './ButtonClearCart'
 
 const CartFooterStyle = styled.footer`

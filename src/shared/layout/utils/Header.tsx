@@ -1,16 +1,17 @@
-import { ArrowLeft } from 'lucide-react'
+import { X } from 'lucide-react'
 import { useContext } from 'react'
 import styled from 'styled-components'
 
 import { OptionsIcon } from '@/shared/assets/OptionsIcon'
-import LogoDX from '@/shared/assets/logo-page.png'
 import { IconButton } from '@/shared/components/iconButton/IconButton'
-import { NavButton } from '@/shared/components/navButton/BotaoNavegar'
 import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
-import { THeadingSecondary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 import { OpenCartButton } from './OpenCartButton'
+
+interface HeaderProps {
+  openCart: () => void
+}
 
 const HeaderStyle = styled.header`
   position: fixed;
@@ -45,41 +46,28 @@ const HeaderStyle = styled.header`
   }
 `
 
-export function Header() {
+export function Header({ openCart }: HeaderProps) {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
   const { toggleMenuNav, expandedMenu } = useMenuNavContext()
 
   return (
     <HeaderStyle>
-      {windowWidth >= 600 ? (
-        <>
-          <img src={LogoDX} alt="Logo DX" className="logo" />
-          <NavButton to="/pagina-inicial">Página inicial</NavButton>
-          <NavButton to="/faq">FAQ</NavButton>
-          <OpenCartButton />
-        </>
-      ) : (
-        <>
-          {expandedMenu && (
-            <THeadingSecondary fontSize={1.5} txtColor={theme.gray[100]}>
-              Navegar
-            </THeadingSecondary>
+      <>
+        <IconButton
+          onClick={toggleMenuNav}
+          size={3}
+          borderRadius={9999}
+          className="icon"
+          disabled={expandedMenu}
+        >
+          {expandedMenu && windowWidth >= 450 ? (
+            <X color={theme.gray[100]} size={40} />
+          ) : (
+            <OptionsIcon color={theme.gray[100]} size={30} />
           )}
-          {!expandedMenu && <OpenCartButton />}
-          <IconButton
-            onClick={toggleMenuNav}
-            borderRadius={9999}
-            size={2.9}
-            className="icon"
-          >
-            {expandedMenu ? (
-              <ArrowLeft color={theme.gray[100]} size={30} />
-            ) : (
-              <OptionsIcon color={theme.gray[100]} size={30} />
-            )}
-          </IconButton>
-        </>
-      )}
+        </IconButton>
+        <OpenCartButton onClick={openCart} />
+      </>
     </HeaderStyle>
   )
 }
