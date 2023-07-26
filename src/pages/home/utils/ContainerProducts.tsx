@@ -8,7 +8,7 @@ import { theme } from '@/shared/theme'
 import { Product } from './Product'
 import { CalcDiscout, roundNumber } from './calcDiscount'
 
-interface IProductProps {
+interface ProductProps {
   id: string
   title: string
   thumbnail: string
@@ -37,7 +37,7 @@ export function ContainerProducts() {
     }
   }, [products])
 
-  const handleAddProduct = (product: IProductProps) => {
+  const handleAddProduct = (product: ProductProps) => {
     addProduct(product)
   }
 
@@ -76,38 +76,41 @@ export function ContainerProducts() {
           />
         </>
       ) : (
-        products.map((e: IProductProps) => (
-          <Product
-            key={e.id}
-            img={getCloudinaryUrl(e.thumbnail)}
-            price={e.price}
-            description={e.title}
-            buttonColorVariant={
-              data.some((itemCart) => itemCart.id === e.id) ? 'red' : 'purple'
-            }
-            buttonText={
-              data.some((itemCart) => itemCart.id === e.id)
-                ? 'Remover do carrinho'
-                : 'Adicionar ao carrinho'
-            }
-            onClick={
-              data.some((itemCart) => itemCart.id === e.id)
-                ? () => handleRemoveProduct(e.id)
-                : () => handleAddProduct(e)
-            }
-            oldPrice={
-              e.original_price
-                ? e.price === e.original_price
-                  ? undefined
-                  : e.original_price
-                : undefined
-            }
-            discount={
-              e.original_price
-                ? roundNumber(CalcDiscout(e.original_price, e.price))
-                : undefined
-            }
-          />
+        products.map((e: ProductProps) => (
+          <Product.Root key={e.id}>
+            <Product.Image img={getCloudinaryUrl(e.thumbnail)} />
+            <Product.Content
+              price={e.price}
+              oldPrice={
+                e.original_price
+                  ? e.price === e.original_price
+                    ? undefined
+                    : e.original_price
+                  : undefined
+              }
+              discount={
+                e.original_price
+                  ? roundNumber(CalcDiscout(e.original_price, e.price))
+                  : undefined
+              }
+              description={e.title}
+            />
+            <Product.Button
+              onClick={
+                data.some((itemCart) => itemCart.id === e.id)
+                  ? () => handleRemoveProduct(e.id)
+                  : () => handleAddProduct(e)
+              }
+              buttonText={
+                data.some((itemCart) => itemCart.id === e.id)
+                  ? 'Remover do carrinho'
+                  : 'Adicionar ao carrinho'
+              }
+              buttonColorVariant={
+                data.some((itemCart) => itemCart.id === e.id) ? 'red' : 'purple'
+              }
+            />
+          </Product.Root>
         ))
       )}
     </ContainerProductsStyle>
