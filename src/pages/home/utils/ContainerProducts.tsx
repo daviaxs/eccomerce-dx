@@ -1,12 +1,12 @@
-import { Skeleton } from '@mui/material'
 import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import { CartContext } from '@/shared/contexts/CartContext'
 import { ProductsContext } from '@/shared/contexts/ProductsContext'
-import { theme } from '@/shared/theme'
+import { Skeleton } from '@mui/material'
 import { Product } from './Product'
 import { CalcDiscout, roundNumber } from './calcDiscount'
+import { theme } from '@/shared/theme'
 
 interface ProductProps {
   id: string
@@ -25,6 +25,8 @@ const ContainerProductsStyle = styled.ul`
   margin-bottom: 2rem;
   gap: 4rem;
 `
+
+const array: number[] = Array.from({ length: 50 }, (_, index) => index + 1)
 
 export function ContainerProducts() {
   const [isLoading, setIsLoading] = useState(true)
@@ -56,24 +58,15 @@ export function ContainerProducts() {
     <ContainerProductsStyle>
       {isLoading ? (
         <>
-          <Skeleton
-            variant="rounded"
-            width={365}
-            height={365}
-            style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
-          />
-          <Skeleton
-            variant="rounded"
-            width={365}
-            height={365}
-            style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
-          />
-          <Skeleton
-            variant="rounded"
-            width={365}
-            height={365}
-            style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
-          />
+          {array.map((_, index) => (
+            <Skeleton
+              key={index}
+              variant="rounded"
+              width={365}
+              height={365}
+              style={{ backgroundColor: theme.gray[700], borderRadius: 12 }}
+            />
+          ))}
         </>
       ) : (
         products.map((e: ProductProps) => (
