@@ -3,10 +3,13 @@ import { ChangeEvent, useContext, useEffect, useState } from 'react'
 import { SearchIcon } from '@/shared/assets/SearchIcon'
 import { useSearchInputContext } from '@/shared/contexts/SearchInputContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
+import { InputSearch } from '@/shared/layout/utils/search/InputSearch'
+import {
+  ButtonSubmitSeachStyle,
+  SearchStyle,
+} from '@/shared/layout/utils/search/Search.styles'
 import { theme } from '@/shared/theme'
 import { X } from 'lucide-react'
-import { InputSearch } from './InputSearch'
-import { ButtonSubmitSeachStyle, SearchStyle } from './Search.styles'
 
 export function Search() {
   const { width: windowWidth } = useContext(WindowDimensionsContext)

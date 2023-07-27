@@ -9,7 +9,7 @@ import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsConte
 import { theme } from '@/shared/theme'
 import { useLocation } from 'react-router-dom'
 import { OpenCartButton } from './OpenCartButton'
-import { Search } from './Search/Search'
+import { Search } from './search/Search'
 
 interface HeaderProps {
   openCart: () => void
