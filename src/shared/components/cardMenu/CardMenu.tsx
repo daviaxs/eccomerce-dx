@@ -1,8 +1,8 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { theme } from '@/shared/theme'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
+import { theme } from '@/shared/theme'
 import { ButtonClose } from './utils/ButtonClose'
 import { CardHeader } from './utils/CardHeader'
 
@@ -106,21 +106,19 @@ export function CardMenu({
     [expanded],
   )
 
-  return (
-    shouldRenderCardMenu && (
-      <CardMenuBG
+  return shouldRenderCardMenu ? (
+    <CardMenuBG
+      className={expanded ? 'open' : 'close'}
+      onAnimationEnd={handleAnimationEnd}
+    >
+      <CardMenuStyle
+        width={windowWidth > 450 ? '26rem' : '100vw'}
         className={expanded ? 'open' : 'close'}
-        onAnimationEnd={handleAnimationEnd}
       >
-        <CardMenuStyle
-          width={windowWidth > 450 ? '26rem' : '100vw'}
-          className={expanded ? 'open' : 'close'}
-        >
-          {windowWidth > 450 && <ButtonClose onClick={closeCard} />}
-          <CardHeader label={label} closeCard={closeCard} />
-          {children}
-        </CardMenuStyle>
-      </CardMenuBG>
-    )
-  )
+        {windowWidth > 450 && <ButtonClose onClick={closeCard} />}
+        <CardHeader label={label} closeCard={closeCard} />
+        {children}
+      </CardMenuStyle>
+    </CardMenuBG>
+  ) : null
 }
