@@ -1,9 +1,6 @@
-interface IIconProps {
-  size: number
-  color: string
-}
+import { IconProps } from './iconProps'
 
-export function OptionsIcon({ color = 'white', size }: IIconProps) {
+export function OptionsIcon({ color = 'white', size }: IconProps) {
   return (
     <svg
       width={size}

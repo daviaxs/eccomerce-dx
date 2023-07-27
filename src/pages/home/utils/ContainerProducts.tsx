@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import { CartContext } from '@/shared/contexts/CartContext'
 import { ProductsContext } from '@/shared/contexts/ProductsContext'
+import { theme } from '@/shared/theme'
 import { Skeleton } from '@mui/material'
 import { Product } from './Product'
 import { CalcDiscout, roundNumber } from './calcDiscount'
-import { theme } from '@/shared/theme'
+import { CartContext } from '@/shared/contexts/CartContext'
 
 interface ProductProps {
   id: string

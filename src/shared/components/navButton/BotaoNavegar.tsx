@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
 import { theme } from '@/shared/theme'
 
-interface INavButtonMobileProps {
+interface NavButtonProps {
   to: string
   children: React.ReactNode
 }
 
-const NavButtonMobileStyle = styled.button`
+const NavButtonStyle = styled.button`
   display: flex;
   align-items: center;
   justify-content: start;
@@ -40,18 +40,18 @@ const NavButtonMobileStyle = styled.button`
   }
 `
 
-export function NavButton({ children, to, ...rest }: INavButtonMobileProps) {
+export function NavButton({ children, to, ...rest }: NavButtonProps) {
   const { toggleMenuNav } = useMenuNavContext()
 
   return (
     <NavLink to={to} style={{ width: '100%' }} onClick={toggleMenuNav}>
       {(props) => (
-        <NavButtonMobileStyle
+        <NavButtonStyle
           className={props.isActive ? 'active' : 'inactive'}
           {...rest}
         >
           {children}
-        </NavButtonMobileStyle>
+        </NavButtonStyle>
       )}
     </NavLink>
   )

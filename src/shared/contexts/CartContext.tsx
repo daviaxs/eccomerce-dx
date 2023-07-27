@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react'
 import { setItem } from '../services/LocalStorageFuncs'
 
-interface IProductProps {
+interface ProductProps {
   id: string
   title: string
   thumbnail: string
@@ -9,10 +9,10 @@ interface IProductProps {
   original_price: number
 }
 
-interface ICartContext {
-  data: IProductProps[]
+interface CartContextProps {
+  data: ProductProps[]
   quantity: { [key: string]: number }
-  addProduct: (product: IProductProps) => void
+  addProduct: (product: ProductProps) => void
   removeProduct: (id: string) => void
   removeProductQuantity: (id: string) => void
   clearCart: () => void
@@ -22,7 +22,9 @@ type CartProviderProps = {
   children: React.ReactNode
 }
 
-export const CartContext = createContext<ICartContext>({} as ICartContext)
+export const CartContext = createContext<CartContextProps>(
+  {} as CartContextProps,
+)
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const shopCart = localStorage.getItem('shopCart')
@@ -33,8 +35,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     quantityCart ? JSON.parse(quantityCart) : 1,
   )
 
-  const addProduct = (product: IProductProps) => {
-    const productInCart = data.find((e: IProductProps) => e.id === product.id)
+  const addProduct = (product: ProductProps) => {
+    const productInCart = data.find((e: ProductProps) => e.id === product.id)
 
     if (productInCart) {
       const newQuantity = {
@@ -59,7 +61,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }
 
   const removeProduct = (id: string) => {
-    const newData = data.filter((e: IProductProps) => e.id !== id)
+    const newData = data.filter((e: ProductProps) => e.id !== id)
     setData(newData)
     setItem({ key: 'shopCart', value: newData })
 

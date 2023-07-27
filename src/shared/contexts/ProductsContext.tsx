@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react'
 import { apiBaseUrl } from '../api/api'
 import { useSearchInputContext } from './SearchInputContext'
 
-interface IProductProps {
+interface ProductProps {
   id: string
   title: string
   thumbnail: string
@@ -10,22 +10,22 @@ interface IProductProps {
   original_price: number
 }
 
-interface IProductsContext {
-  products: IProductProps[]
+interface ProductsContextProps {
+  products: ProductProps[]
 }
 
 type ProductsProviderProps = {
   children: React.ReactNode
 }
 
-export const ProductsContext = createContext<IProductsContext>(
-  {} as IProductsContext,
+export const ProductsContext = createContext<ProductsContextProps>(
+  {} as ProductsContextProps,
 )
 
 export const ProductsProvider: React.FC<ProductsProviderProps> = ({
   children,
 }) => {
-  const [products, setProducts] = useState<IProductProps[]>([])
+  const [products, setProducts] = useState<ProductProps[]>([])
   const { inputValue } = useSearchInputContext()
 
   useEffect(() => {

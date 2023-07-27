@@ -1,9 +1,9 @@
-interface ISetItem {
+interface SetItemProps {
   key: string
   value: any
 }
 
-export const setItem = ({ key, value }: ISetItem) => {
+export const setItem = ({ key, value }: SetItemProps) => {
   localStorage.setItem(key, JSON.stringify(value))
 }
 

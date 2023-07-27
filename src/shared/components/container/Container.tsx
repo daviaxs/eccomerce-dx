@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 // eslint-disable-next-line no-undef
-interface IContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   display: 'flex' | 'none' | 'grid' | 'block'
   flexDir?: 'row' | 'column'
   justifyContent?: 'start' | 'center' | 'end' | 'space-between'
@@ -35,7 +35,7 @@ interface IContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   onClick?: () => void
 }
 
-export const Container = styled.div<IContainerProps>`
+export const Container = styled.div<ContainerProps>`
   display: ${(props) => props.display};
   flex-direction: ${(props) => props.flexDir};
   justify-content: ${(props) => props.justifyContent};

@@ -8,7 +8,7 @@ import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
 import { ButtonAddAndRemove } from './ButtonAddAndRemove'
 
-interface IProductProps {
+interface ProductProps {
   title: string
   thumbnail: string
   price: number
@@ -60,7 +60,7 @@ export function CartProduct({
   counterProduct,
   onClickAdd,
   onClickRemove,
-}: IProductProps) {
+}: ProductProps) {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
 
   return (

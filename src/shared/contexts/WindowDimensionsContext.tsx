@@ -1,21 +1,21 @@
 import React, { createContext, useEffect, useState } from 'react'
 
-interface IWindowDimensionsContextProps {
+interface WindowDimensionsContextProps {
   width: number
   height: number
 }
 
-interface IWindowDimensionsProviderProps {
+interface WindowDimensionsProviderProps {
   children: React.ReactNode
 }
 
 export const WindowDimensionsContext =
-  createContext<IWindowDimensionsContextProps>(
-    {} as IWindowDimensionsContextProps,
+  createContext<WindowDimensionsContextProps>(
+    {} as WindowDimensionsContextProps,
   )
 
 export const WindowDimensionsProvider: React.FC<
-  IWindowDimensionsProviderProps
+  WindowDimensionsProviderProps
 > = ({ children }) => {
   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,

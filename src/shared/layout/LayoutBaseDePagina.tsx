@@ -10,7 +10,7 @@ import { CartContent } from './utils/CartMenu/cartContent/CartContent'
 import { getCartText } from './utils/CartMenu/getCartText'
 import { MenuNav } from './utils/MenuNav'
 
-interface ILayoutBaseDePaginaProps {
+interface LayoutBaseDePaginaProps {
   children: React.ReactNode
 }
 
@@ -23,7 +23,7 @@ const Box = styled.div`
   overflow-x: hidden;
 `
 
-export function LayoutBaseDePagina({ children }: ILayoutBaseDePaginaProps) {
+export function LayoutBaseDePagina({ children }: LayoutBaseDePaginaProps) {
   const [expandedCartMenu, setExpandedCartMenu] = useState(false)
   const cartLength = useCartLength()
 

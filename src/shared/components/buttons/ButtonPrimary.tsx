@@ -2,7 +2,7 @@ import { theme } from '@/shared/theme'
 import React from 'react'
 import styled from 'styled-components'
 
-interface IButtonPrimaryProps {
+interface ButtonPrimaryProps {
   variant: 'purple' | 'green' | 'red'
   width: '100%' | '90%'
   children: React.ReactNode
@@ -55,7 +55,7 @@ const getButtonColorFocus = (variant: string) => {
   }
 }
 
-const ButtonPrimaryStyle = styled.button<IButtonPrimaryProps>`
+const ButtonPrimaryStyle = styled.button<ButtonPrimaryProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +94,7 @@ export function ButtonPrimary({
   onClick,
   disabled,
   className,
-}: IButtonPrimaryProps) {
+}: ButtonPrimaryProps) {
   return (
     <ButtonPrimaryStyle
       className={className}

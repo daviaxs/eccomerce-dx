@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface IIconButtonProps {
+interface IconButtonProps {
   size: number
   borderRadius: number
   display?: 'flex' | 'none'
@@ -11,7 +11,7 @@ interface IIconButtonProps {
   onClick?: () => void
 }
 
-const IconButtonStyle = styled.button<IIconButtonProps>`
+const IconButtonStyle = styled.button<IconButtonProps>`
   display: ${(props) => props.display};
   align-items: center;
   justify-content: center;
@@ -43,7 +43,7 @@ export function IconButton({
   children,
   onClick,
   disabled,
-}: IIconButtonProps) {
+}: IconButtonProps) {
   return (
     <IconButtonStyle
       size={size}

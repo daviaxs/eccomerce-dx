@@ -8,11 +8,11 @@ interface ProductRootProps {
   children: React.ReactNode
 }
 
-interface IProductStyleProps {
+interface ProductStyleProps {
   width: string
 }
 
-const ProductStyle = styled.li<IProductStyleProps>`
+const ProductStyle = styled.li<ProductStyleProps>`
   position: relative;
   display: flex;
   flex-direction: column;

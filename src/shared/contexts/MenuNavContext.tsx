@@ -1,21 +1,21 @@
 import React, { createContext, useCallback, useContext, useState } from 'react'
 
-interface IMenuNavContextData {
+interface MenuNavContextData {
   expandedMenu: boolean
   toggleMenuNav: () => void
 }
 
-interface IMenuNavProviderProps {
+interface MenuNavProviderProps {
   children: React.ReactNode
 }
 
-const MenuNavContext = createContext({} as IMenuNavContextData)
+const MenuNavContext = createContext({} as MenuNavContextData)
 
 export const useMenuNavContext = () => {
   return useContext(MenuNavContext)
 }
 
-export const MenuNavProvider: React.FC<IMenuNavProviderProps> = ({
+export const MenuNavProvider: React.FC<MenuNavProviderProps> = ({
   children,
 }) => {
   const [expandedMenu, setExpandedMenu] = useState(false)

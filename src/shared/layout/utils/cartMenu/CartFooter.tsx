@@ -2,13 +2,13 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 import swal from 'sweetalert'
 
-import { CartContext } from '@/shared/contexts/CartContext'
+import { ButtonPrimary } from '@/shared/components/buttons/ButtonPrimary'
+import { Container } from '@/shared/components/container/Container'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
-import { ButtonPrimary } from '@/shared/components/buttons/ButtonPrimary'
-import { Container } from '@/shared/components/container/Container'
 import { ButtonClearCart } from './ButtonClearCart'
+import { CartContext } from '@/shared/contexts/CartContext'
 
 const CartFooterStyle = styled.footer`
   display: flex;

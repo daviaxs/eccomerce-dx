@@ -2,7 +2,7 @@ import { theme } from '@/shared/theme'
 import React from 'react'
 import styled from 'styled-components'
 
-interface IButtonAddAndRemoveProps {
+interface ButtonAddAndRemoveProps {
   variant: 'default' | 'green'
   children: React.ReactNode
 
@@ -18,7 +18,7 @@ const getButtonColor = (variant: string) => {
   }
 }
 
-const ButtonAddAndRemoveStyle = styled.button<IButtonAddAndRemoveProps>`
+const ButtonAddAndRemoveStyle = styled.button<ButtonAddAndRemoveProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@ export function ButtonAddAndRemove({
   variant,
   children,
   onClick,
-}: IButtonAddAndRemoveProps) {
+}: ButtonAddAndRemoveProps) {
   return (
     <ButtonAddAndRemoveStyle variant={variant} onClick={onClick}>
       {children}

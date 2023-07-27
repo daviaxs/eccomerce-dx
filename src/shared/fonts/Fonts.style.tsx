@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface ITextProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+interface TextProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   txtColor?: string
   txtShadow?: string
   fontSize?: number
@@ -13,7 +13,7 @@ interface ITextProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   children: React.ReactNode
 }
 
-const THeadingPrimaryStyle = styled.h1<ITextProps>`
+const THeadingPrimaryStyle = styled.h1<TextProps>`
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: ${(props) => props.fontSize}rem;
@@ -25,7 +25,7 @@ const THeadingPrimaryStyle = styled.h1<ITextProps>`
   text-shadow: ${(props) => props.txtShadow};
 `
 
-const THeadingSecondaryStyle = styled.h2<ITextProps>`
+const THeadingSecondaryStyle = styled.h2<TextProps>`
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: ${(props) => props.fontSize}rem;
@@ -37,7 +37,7 @@ const THeadingSecondaryStyle = styled.h2<ITextProps>`
   text-shadow: ${(props) => props.txtShadow};
 `
 
-const TTitlePrimaryStyle = styled.strong<ITextProps>`
+const TTitlePrimaryStyle = styled.strong<TextProps>`
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: ${(props) => props.fontSize}rem;
@@ -49,7 +49,7 @@ const TTitlePrimaryStyle = styled.strong<ITextProps>`
   text-shadow: ${(props) => props.txtShadow};
 `
 
-const TTextPrimaryStyle = styled.p<ITextProps>`
+const TTextPrimaryStyle = styled.p<TextProps>`
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: ${(props) => props.fontSize}rem;
@@ -62,7 +62,7 @@ const TTextPrimaryStyle = styled.p<ITextProps>`
   text-decoration-line: ${(props) => props.txtDecoration};
 `
 
-export const THeadingPrimary: React.FC<ITextProps> = ({
+export const THeadingPrimary: React.FC<TextProps> = ({
   txtColor,
   className,
   txtShadow,
@@ -87,7 +87,7 @@ export const THeadingPrimary: React.FC<ITextProps> = ({
   )
 }
 
-export const THeadingSecondary: React.FC<ITextProps> = ({
+export const THeadingSecondary: React.FC<TextProps> = ({
   txtColor,
   className,
   txtShadow,
@@ -112,7 +112,7 @@ export const THeadingSecondary: React.FC<ITextProps> = ({
   )
 }
 
-export const TTitlePrimary: React.FC<ITextProps> = ({
+export const TTitlePrimary: React.FC<TextProps> = ({
   txtColor,
   className,
   txtShadow,
@@ -137,7 +137,7 @@ export const TTitlePrimary: React.FC<ITextProps> = ({
   )
 }
 
-export const TTextPrimary: React.FC<ITextProps> = ({
+export const TTextPrimary: React.FC<TextProps> = ({
   txtColor,
   className,
   txtShadow,
