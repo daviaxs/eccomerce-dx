@@ -5,9 +5,9 @@ import { Container } from '@/shared/components/container/Container'
 import { Header } from '@/shared/layout/utils/Header'
 import { CardMenu } from '../components/cardMenu/CardMenu'
 import { useCartLength } from '../services/CartLength'
-import { CartFooter } from './utils/CartMenu/CartFooter'
-import { CartContent } from './utils/CartMenu/cartContent/CartContent'
-import { getCartText } from './utils/CartMenu/getCartText'
+import { CartFooter } from './utils/cartMenu/CartFooter'
+import { CartContent } from './utils/cartMenu/cartContent/CartContent'
+import { getCartText } from './utils/cartMenu/getCartText'
 import { MenuNav } from './utils/MenuNav'
 
 interface LayoutBaseDePaginaProps {
