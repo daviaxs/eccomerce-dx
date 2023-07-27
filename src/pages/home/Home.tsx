@@ -29,17 +29,10 @@ export function Home() {
   return (
     <LayoutBaseDePagina>
       <Container display="flex" flexDir="column" gap={1} height="" width="">
-        <THeadingPrimary
-          fontSize={windowWidth <= 600 ? 1.5 : 2}
-          textAlign={windowWidth <= 600 ? 'center' : 'start'}
-          txtColor={theme.gray[50]}
-        >
-          Bem-vindo ao nosso incrível mundo de tecnologia móvel!
-        </THeadingPrimary>
         <TTitlePrimary
           fontSize={windowWidth <= 600 ? 0.9 : 1.2}
-          textAlign={windowWidth <= 600 ? 'center' : 'start'}
-          txtColor={theme.gray[200]}
+          textAlign="center"
+          txtColor={theme.gray[100]}
         >
           Explore nosso site agora e descubra uma infinidade de recursos,
           ofertas irresistíveis e a conveniência de fazer suas compras online.
