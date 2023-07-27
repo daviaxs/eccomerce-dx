@@ -19,11 +19,11 @@ interface ProductProps {
   onClickRemove: () => void
 }
 
-interface IProductStyleProps {
+interface ProductStyleProps {
   height: number
 }
 
-const ProductStyle = styled.li<IProductStyleProps>`
+const ProductStyle = styled.li<ProductStyleProps>`
   display: flex;
   align-items: center;
   justify-content: start;
@@ -63,6 +63,20 @@ export function CartProduct({
 }: ProductProps) {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
 
+  const getProductValueSize = (price: Number) => {
+    if (windowWidth <= 400) {
+      if (price.toString().length <= 6) {
+        return 1.2
+      } else {
+        return 1
+      }
+    } else if (price.toString().length <= 6) {
+      return 1.3
+    } else {
+      return 1.1
+    }
+  }
+
   return (
     <ProductStyle height={windowWidth <= 400 ? 10 : 7.5}>
       <img src={thumbnail} className="productImage" alt="" />
@@ -100,7 +114,7 @@ export function CartProduct({
                 })}
               </TTextPrimary>
             )}
-            <THeadingPrimary fontSize={windowWidth <= 400 ? 1.2 : 1.5}>
+            <THeadingPrimary fontSize={getProductValueSize(price)}>
               {price.toLocaleString('pt-BR', {
                 style: 'currency',
                 currency: 'BRL',
