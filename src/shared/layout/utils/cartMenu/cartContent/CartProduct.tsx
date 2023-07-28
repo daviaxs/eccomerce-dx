@@ -36,6 +36,9 @@ const ProductStyle = styled.li<ProductStyleProps>`
   border-bottom: 1px solid ${theme.gray[400]};
 
   .productImage {
+    object-fit: cover;
+    max-width: 6rem;
+    min-width: 6rem;
     border-radius: 0.5rem;
   }
 
