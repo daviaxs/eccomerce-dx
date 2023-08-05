@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { useMenuNavContext } from '@/shared/contexts/MenuNavContext'
+import { useSearchInputContext } from '@/shared/contexts/SearchInputContext'
 import { theme } from '@/shared/theme'
 
 interface NavButtonProps {
@@ -42,9 +43,15 @@ const NavButtonStyle = styled.button`
 
 export function NavButton({ children, to, ...rest }: NavButtonProps) {
   const { toggleMenuNav } = useMenuNavContext()
+  const { setInputValue } = useSearchInputContext()
+
+  const handleRedirect = () => {
+    toggleMenuNav()
+    setInputValue('em alta')
+  }
 
   return (
-    <NavLink to={to} style={{ width: '100%' }} onClick={toggleMenuNav}>
+    <NavLink to={to} style={{ width: '100%' }} onClick={handleRedirect}>
       {(props) => (
         <NavButtonStyle
           className={props.isActive ? 'active' : 'inactive'}
