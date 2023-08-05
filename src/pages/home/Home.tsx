@@ -9,6 +9,7 @@ import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsConte
 import { THeadingPrimary, TTitlePrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout/LayoutBaseDePagina'
 import { theme } from '@/shared/theme'
+import { Alert } from './utils/Alert'
 
 const Separator = styled.span`
   display: flex;
@@ -58,7 +59,7 @@ export function Home() {
         height=""
       >
         <ContainerProducts />
-        {products.length === 0 && inputValue.length > 0 && <p>Alert</p>}
+        {products.length === 0 && inputValue.length > 0 && <Alert />}
       </Container>
     </LayoutBaseDePagina>
   )
