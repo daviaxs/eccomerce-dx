@@ -1,7 +1,10 @@
+import { XCircle } from 'lucide-react'
+import { useContext } from 'react'
+import styled from 'styled-components'
+
+import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary, TTextPrimary } from '@/shared/fonts/Fonts.style'
 import { theme } from '@/shared/theme'
-import { XCircle } from 'lucide-react'
-import styled from 'styled-components'
 
 const AlertStyle = styled.div`
   display: flex;
@@ -9,7 +12,7 @@ const AlertStyle = styled.div`
   justify-content: center;
 
   height: 16rem;
-  width: 80%;
+  width: 100%;
 
   gap: 2rem;
   padding: 1rem;
@@ -17,7 +20,7 @@ const AlertStyle = styled.div`
   background-color: ${theme.gray[500]};
   border-radius: 0.5rem;
 
-  @media screen and (max-width: 950px) {
+  @media screen and (max-width: 800px) {
     flex-direction: column;
   }
 `
@@ -36,18 +39,36 @@ const TextsSuggestions = styled.li`
 `
 
 export function Alert() {
+  const { width: windowWidth } = useContext(WindowDimensionsContext)
+
+  const getHeadingTextSize = () => {
+    if (windowWidth >= 0 && windowWidth <= 600) {
+      return 0.8
+    } else if (windowWidth > 600 && windowWidth < 900) {
+      return 1
+    } else {
+      return 1.5
+    }
+  }
+
   return (
     <AlertStyle>
       <XCircle size={110} color={theme.gray[200]} />
       <TextContainer>
-        <THeadingPrimary fontSize={1.5}>
+        <THeadingPrimary fontSize={getHeadingTextSize()}>
           Não há anúncios que correspondam à sua busca
         </THeadingPrimary>
         <TextsSuggestions>
-          <TTextPrimary txtColor={theme.gray[100]}>
+          <TTextPrimary
+            txtColor={theme.gray[100]}
+            fontSize={windowWidth > 650 ? 1 : 0.8}
+          >
             • Revise a ortografia da palavra.
           </TTextPrimary>
-          <TTextPrimary txtColor={theme.gray[100]}>
+          <TTextPrimary
+            txtColor={theme.gray[100]}
+            fontSize={windowWidth > 650 ? 1 : 0.8}
+          >
             • Utilize palavras mais genéricas ou menos palavras.
           </TTextPrimary>
         </TextsSuggestions>
