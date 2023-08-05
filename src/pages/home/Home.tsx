@@ -3,6 +3,8 @@ import styled from 'styled-components'
 
 import { ContainerProducts } from '@/pages/home/utils/ContainerProducts'
 import { Container } from '@/shared/components/container/Container'
+import { ProductsContext } from '@/shared/contexts/ProductsContext'
+import { useSearchInputContext } from '@/shared/contexts/SearchInputContext'
 import { WindowDimensionsContext } from '@/shared/contexts/WindowDimensionsContext'
 import { THeadingPrimary, TTitlePrimary } from '@/shared/fonts/Fonts.style'
 import { LayoutBaseDePagina } from '@/shared/layout/LayoutBaseDePagina'
@@ -25,6 +27,8 @@ const LineStyle = styled.span`
 
 export function Home() {
   const { width: windowWidth } = useContext(WindowDimensionsContext)
+  const { products } = useContext(ProductsContext)
+  const { inputValue } = useSearchInputContext()
 
   return (
     <LayoutBaseDePagina>
@@ -54,6 +58,7 @@ export function Home() {
         height=""
       >
         <ContainerProducts />
+        {products.length === 0 && inputValue.length > 0 && <p>Alert</p>}
       </Container>
     </LayoutBaseDePagina>
   )
